@@ -12,10 +12,8 @@ import { MarketplaceRelatedPosts } from "@/components/marketplace/MarketplaceRel
 import { MarketplaceSidebar } from "@/components/marketplace/MarketplaceSidebar";
 import { MarketplaceTradeProgress } from "@/components/marketplace/MarketplaceTradeProgress";
 import { hamiltonSuburbs } from "@/config/marketplace";
-import { getCurrentUser } from "@/lib/current-user";
+import { getFirebaseMarketPost, listFirebaseMarketPosts } from "@/lib/firebase-marketplace";
 import { getWeeklyPopularMarketPosts } from "@/lib/marketplace-popular";
-import { getMarketPostById, getMarketPostList, incrementMarketPostViews } from "@/lib/marketplace-store";
-import { findUserById } from "@/lib/user-store";
 import type { MarketContactDisplay, MarketPostImage } from "@/types/marketplace";
 
 const DEFAULT_AUTHOR_AVATAR =
@@ -30,20 +28,17 @@ export default async function MarketplacePostPage({
 }) {
   const { postId } = await params;
   const query = await searchParams;
-  const user = await getCurrentUser();
   const [post, marketPosts] = await Promise.all([
-    getMarketPostById(postId, user?.id, { externalizeImages: true }),
-    getMarketPostList(user?.id),
+    getFirebaseMarketPost(postId),
+    listFirebaseMarketPosts(),
   ]);
 
   if (!post) {
     notFound();
   }
 
-  void incrementMarketPostViews(postId, { defer: true });
-
   const initialNow = Date.now();
-  const seller = post.userId ? await findUserById(post.userId) : null;
+  const seller = { createdAt: post.createdAt };
   const sellerCompletedCount = getSellerCompletedCount(marketPosts, post.userId);
   const sellerGrade = getSellerGrade(sellerCompletedCount);
   const railPosts = getWeeklyPopularMarketPosts(marketPosts, {
@@ -125,11 +120,11 @@ export default async function MarketplacePostPage({
                 <MarketplaceContactDropdown
                   authorNickname={post.authorNickname}
                   contacts={contactDisplays}
-                  isLoggedIn={Boolean(user)}
+                  isLoggedIn={false}
                   postId={post.id}
                   postTitle={post.title}
                 />
-                <MarketplaceTradeProgress initialPost={post} isLoggedIn={Boolean(user)} />
+                <MarketplaceTradeProgress initialPost={post} isLoggedIn={false} />
               </div>
             </section>
 
@@ -224,7 +219,7 @@ export default async function MarketplacePostPage({
                       {display.method === "korin_chat" ? (
                         <MarketplaceChatButton
                           authorNickname={post.authorNickname}
-                          isLoggedIn={Boolean(user)}
+                          isLoggedIn={false}
                           postId={post.id}
                           postTitle={post.title}
                         />
@@ -237,15 +232,15 @@ export default async function MarketplacePostPage({
               </section>
             </section>
 
-            <MarketplacePostActions initialPost={post} isLoggedIn={Boolean(user)} />
+            <MarketplacePostActions initialPost={post} isLoggedIn={false} />
 
             <MarketplaceComments
-              currentUserId={user?.id ?? null}
-              currentUserNickname={user?.nickname ?? null}
-              currentUserProfileImageUrl={user?.profile.profileImageUrl ?? null}
+              currentUserId={null}
+              currentUserNickname={null}
+              currentUserProfileImageUrl={null}
               initialNow={initialNow}
               initialComments={post.comments}
-              isLoggedIn={Boolean(user)}
+              isLoggedIn={false}
               postAuthorId={post.userId}
               postId={post.id}
             />

@@ -1,6 +1,5 @@
 import { normalizeMarketMenu } from "@/features/marketplace/view-model/marketplace-board.vm";
-import { getCurrentUser } from "@/lib/current-user";
-import { getMarketPostList } from "@/lib/marketplace-store";
+import { listFirebaseMarketPosts } from "@/lib/firebase-marketplace";
 import { PostListPageView } from "@/views/PostListPage/PostListPage";
 
 type MarketplacePageProps = {
@@ -19,8 +18,8 @@ export default async function MarketplacePage({ searchParams }: MarketplacePageP
   const rawInitialMenu = Array.isArray(params?.menu)
     ? params.menu[0] ?? ""
     : params?.menu ?? (Array.isArray(params?.tab) ? params.tab[0] ?? "" : params?.tab ?? "");
-  const user = await getCurrentUser();
-  const posts = await getMarketPostList(user?.id);
+  const user = null;
+  const posts = await listFirebaseMarketPosts();
 
   return (
     <PostListPageView

@@ -3,10 +3,14 @@
 import Script from "next/script";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from "firebase/auth";
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
+import { getDownloadURL, ref, uploadString } from "firebase/storage";
 
 import { Button } from "@/components/common/Button";
 import { GoogleAuthLink } from "@/components/auth/GoogleAuthLink";
 import { termsSections } from "@/config/terms";
+import { getFirebaseAuth, getFirebaseStorage, getFirestoreDb } from "@/lib/firebase";
 
 type FormState = {
   error: string;
@@ -89,6 +93,72 @@ export function RegisterForm() {
       return;
     }
 
+    try {
+      const form = new FormData(event.currentTarget);
+      const email = String(form.get("loginId") ?? "").trim();
+      const displayName = String(form.get("nickname") ?? "").trim();
+      const credential = await createUserWithEmailAndPassword(
+        getFirebaseAuth(),
+        email,
+        String(form.get("password") ?? ""),
+      );
+      const { user } = credential;
+      let photoURL: string | null = null;
+
+      if (profileImage) {
+        const imageRef = ref(getFirebaseStorage(), `users/${user.uid}/profile/profile-${Date.now()}.jpg`);
+        await uploadString(imageRef, profileImage, "data_url");
+        photoURL = await getDownloadURL(imageRef);
+      }
+
+      await updateProfile(user, { displayName, photoURL });
+      await sendEmailVerification(user);
+      await setDoc(doc(getFirestoreDb(), "users", user.uid), {
+        uid: user.uid,
+        email: user.email,
+        displayName,
+        photoURL,
+        createdAt: serverTimestamp(),
+        updatedAt: serverTimestamp(),
+        role: "user",
+        emailVerified: user.emailVerified,
+        profile: {
+          bio: String(form.get("bio") ?? "") || null,
+          businessDescription: String(form.get("businessDescription") ?? "") || null,
+          businessInterested: form.get("businessInterested") === "on",
+          businessName: String(form.get("businessName") ?? "") || null,
+          hasCar:
+            form.get("hasCar") === "yes"
+              ? true
+              : form.get("hasCar") === "no"
+                ? false
+                : null,
+          interests: form.getAll("interests").map(String),
+          kakaoTalkId: String(form.get("kakaoTalkId") ?? "") || null,
+          lifeInfoInterests: form.getAll("lifeInfoInterests").map(String),
+          preferredLanguage: String(form.get("preferredLanguage") ?? "ko"),
+          residencyStatus: String(form.get("residencyStatus") ?? "") || null,
+          smartphoneNumber: String(form.get("smartphoneNumber") ?? "") || null,
+          tradeArea: String(form.get("tradeArea") ?? "") || null,
+        },
+      });
+
+      router.push("/my-page");
+      router.refresh();
+      return;
+    } catch (error) {
+      setState({
+        error: error instanceof Error ? error.message : "회원가입에 실패했습니다.",
+        loading: false,
+      });
+      return;
+    }
+
+    if (passwordMismatch) {
+      setState({ error: "비밀번호가 서로 일치하지 않습니다.", loading: false });
+      return;
+    }
+
     const form = new FormData(event.currentTarget);
     const response = await fetch("/api/auth/register", {
       method: "POST",
@@ -145,6 +215,9 @@ export function RegisterForm() {
       setState({ error: "이메일 인증은 이메일 주소 입력 후 사용할 수 있습니다.", loading: false });
       return;
     }
+
+    setVerificationMessage("회원가입을 완료하면 Firebase 인증 메일이 자동으로 발송됩니다.");
+    return;
 
     setSendingVerification(true);
     const response = await fetch("/api/auth/send-verification-email", {

@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import type { ChangeEvent, FormEvent, MouseEvent } from "react";
 
+import { getFirebaseAuth } from "@/lib/firebase";
+import { saveFirebaseMarketPost } from "@/lib/firebase-marketplace";
 import {
   hamiltonSuburbs,
   marketBoardTypes,
@@ -796,6 +798,26 @@ function saveMarketplacePost({
   payload: Record<string, unknown>;
   postId?: string;
 }): Promise<{ ok: boolean; error?: string; post?: { id: string } }> {
+  const currentUser = getFirebaseAuth().currentUser;
+  if (!currentUser) {
+    return Promise.resolve({ ok: false, error: "로그인이 필요합니다." });
+  }
+
+  onProgress(52);
+  return saveFirebaseMarketPost({
+    currentUser,
+    payload,
+    postId: method === "PATCH" ? postId : undefined,
+  })
+    .then((post) => {
+      onProgress(96);
+      return { ok: true, post: { id: post.id } };
+    })
+    .catch((error) => ({
+      ok: false,
+      error: error instanceof Error ? error.message : "게시글을 저장하지 못했습니다.",
+    }));
+
   return new Promise((resolve) => {
     const request = new XMLHttpRequest();
 

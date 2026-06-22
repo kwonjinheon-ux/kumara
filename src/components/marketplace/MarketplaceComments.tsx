@@ -3,6 +3,8 @@
 import { useMemo, useState } from "react";
 import type { KeyboardEvent } from "react";
 
+import { useAuth } from "@/components/auth/AuthProvider";
+import { addFirebaseComment, deleteFirebaseComment, updateFirebaseComment } from "@/lib/firebase-marketplace";
 import type { MarketComment, MarketVoteType } from "@/types/marketplace";
 
 type Props = {
@@ -34,6 +36,7 @@ export function MarketplaceComments({
   postAuthorId,
   postId,
 }: Props) {
+  const { firebaseUser } = useAuth();
   const [comments, setComments] = useState<RenderableMarketComment[]>(initialComments);
   const [draft, setDraft] = useState("");
   const [replyTo, setReplyTo] = useState<string | null>(null);
@@ -75,7 +78,7 @@ export function MarketplaceComments({
   }, [comments]);
 
   async function submitComment(parentId: string | null, content: string) {
-    if (!isLoggedIn) {
+    if (!firebaseUser) {
       window.location.assign("/auth/login");
       return;
     }
@@ -86,6 +89,26 @@ export function MarketplaceComments({
       return;
     }
 
+    try {
+      const savedPost = await addFirebaseComment({
+        content: trimmedContent,
+        currentUser: firebaseUser,
+        parentId,
+        postId,
+      });
+      if (savedPost) setComments(savedPost.comments);
+      if (parentId) {
+        setReplyDraft("");
+        setReplyTo(null);
+      } else {
+        setDraft("");
+      }
+      return;
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "댓글을 저장하지 못했습니다.");
+      return;
+    }
+
     const optimisticId = `optimistic-${Date.now()}-${Math.random().toString(36).slice(2)}`;
     const parentComment = parentId ? comments.find((comment) => comment.id === parentId) : null;
     const optimisticComment: RenderableMarketComment = {
@@ -93,7 +116,7 @@ export function MarketplaceComments({
       authorProfileImageUrl: currentUserProfileImageUrl ?? null,
       content: trimmedContent,
       createdAt: new Date().toISOString(),
-      depth: parentComment ? Math.min(3, parentComment.depth + 1) : 1,
+      depth: parentComment ? Math.min(3, (parentComment?.depth ?? 1) + 1) : 1,
       downvoteCount: 0,
       downvotedBy: [],
       id: optimisticId,
@@ -109,7 +132,7 @@ export function MarketplaceComments({
     if (parentId) {
       setExpandedThreads((current) => {
         const next = new Set(current);
-        next.add(parentId);
+        next.add(parentId as string);
         return next;
       });
       setReplyDraft("");
@@ -144,9 +167,9 @@ export function MarketplaceComments({
 
       const serverComments = Array.isArray(result.post?.comments)
         ? (result.post.comments as MarketComment[])
-        : null;
+        : [];
 
-      if (serverComments) {
+      if (serverComments.length) {
         setComments((current) => {
           const optimisticCommentInState = current.find((comment) => comment.id === optimisticId);
           const createdAt = optimisticCommentInState
@@ -214,7 +237,7 @@ export function MarketplaceComments({
   }
 
   async function voteComment(comment: RenderableMarketComment, vote: MarketVoteType) {
-    if (!isLoggedIn) {
+    if (!firebaseUser) {
       window.location.assign("/auth/login");
       return;
     }
@@ -245,12 +268,24 @@ export function MarketplaceComments({
   }
 
   async function submitCommentEdit(commentId: string) {
-    if (!isLoggedIn) {
+    if (!firebaseUser) {
       window.location.assign("/auth/login");
       return;
     }
 
     setMessage(null);
+    try {
+      const savedPost = await updateFirebaseComment(postId, commentId, firebaseUser, editDraft);
+      if (savedPost) setComments(savedPost.comments);
+      setEditingCommentId(null);
+      setEditDraft("");
+      setOpenMenuId(null);
+      return;
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "댓글을 삭제하지 못했습니다.");
+      return;
+    }
+
     const response = await fetch(`/api/marketplace/posts/${postId}/comments/${commentId}`, {
       body: JSON.stringify({ content: editDraft }),
       credentials: "same-origin",
@@ -271,7 +306,7 @@ export function MarketplaceComments({
   }
 
   async function deleteComment(commentId: string) {
-    if (!isLoggedIn) {
+    if (!firebaseUser) {
       window.location.assign("/auth/login");
       return;
     }
@@ -279,6 +314,18 @@ export function MarketplaceComments({
     if (!window.confirm("댓글을 삭제할까요?")) return;
 
     setMessage(null);
+    try {
+      const savedPost = await deleteFirebaseComment(postId, commentId, firebaseUser);
+      if (savedPost) setComments(savedPost.comments);
+      setEditingCommentId(null);
+      setEditDraft("");
+      setOpenMenuId(null);
+      return;
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "댓글을 삭제하지 못했습니다.");
+      return;
+    }
+
     const response = await fetch(`/api/marketplace/posts/${postId}/comments/${commentId}`, {
       credentials: "same-origin",
       method: "DELETE",

@@ -1,13 +1,10 @@
-import { redirect } from "next/navigation";
-
 import { MarketplaceRightRail } from "@/components/marketplace/MarketplaceBoard";
 import { MarketplacePostForm } from "@/components/marketplace/MarketplacePostForm";
 import { MarketplaceSidebar } from "@/components/marketplace/MarketplaceSidebar";
 import { getMarketplaceImageLimit } from "@/config/marketplace";
 import { normalizeMarketMenu } from "@/features/marketplace/view-model/marketplace-board.vm";
-import { getCurrentUser } from "@/lib/current-user";
+import { listFirebaseMarketPosts } from "@/lib/firebase-marketplace";
 import { getWeeklyPopularMarketPosts } from "@/lib/marketplace-popular";
-import { getMarketPostList } from "@/lib/marketplace-store";
 import type { MarketBoardType } from "@/types/marketplace";
 
 type MarketplaceNewPageProps = {
@@ -21,14 +18,8 @@ export default async function MarketplaceNewPage({ searchParams }: MarketplaceNe
   const rawMenu = Array.isArray(params?.menu) ? params.menu[0] ?? "" : params?.menu ?? "";
   const activeMenu = normalizeMarketMenu(rawMenu);
   const initialBoardType = getInitialBoardType(activeMenu);
-  const user = await getCurrentUser();
-
-  if (!user) {
-    redirect("/auth/login");
-  }
-
-  const imageLimit = getMarketplaceImageLimit(user.membershipLevel);
-  const posts = await getMarketPostList(user.id);
+  const imageLimit = getMarketplaceImageLimit("iron");
+  const posts = await listFirebaseMarketPosts();
   const railPosts = getWeeklyPopularMarketPosts(posts, { limit: 5 });
 
   return (
@@ -43,10 +34,10 @@ export default async function MarketplaceNewPage({ searchParams }: MarketplaceNe
             imageLimit={imageLimit}
             initialBoardType={initialBoardType}
             userContact={{
-              allowChat: user.profile.allowChat,
-              email: user.email,
-              kakaoTalkId: user.profile.kakaoTalkId,
-              smartphoneNumber: user.profile.smartphoneNumber,
+              allowChat: true,
+              email: null,
+              kakaoTalkId: null,
+              smartphoneNumber: null,
             }}
           />
         </div>

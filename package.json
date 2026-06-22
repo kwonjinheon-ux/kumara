@@ -8,19 +8,18 @@
   "scripts": {
     "dev": "next dev --webpack --hostname 0.0.0.0",
     "dev:turbo": "next dev --turbopack --hostname 0.0.0.0",
-    "dev:restart": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/restart-dev.ps1",
     "build": "next build",
     "deploy": "npx -y firebase-tools@latest deploy",
     "deploy:apphosting": "npx -y firebase-tools@latest deploy --only apphosting",
     "emulate:hosting": "npx -y firebase-tools@latest emulators:start --only hosting",
-    "data:compact-marketplace": "node scripts/compact-marketplace-data.mjs",
-    "perf:marketplace": "node scripts/marketplace-perf.mjs",
+    "migrate:firebase": "node scripts/migrate-local-data-to-firestore.js",
     "start": "next start",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@types/nodemailer": "^8.0.0",
     "firebase": "^12.15.0",
+    "firebase-admin": "^14.0.0",
     "next": "16.2.4",
     "nodemailer": "^8.0.7",
     "react": "19.2.0",

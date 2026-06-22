@@ -1,15 +1,23 @@
+"use client";
+
+import Image from "next/image";
+import { Suspense } from "react";
+
+import { useAuth } from "@/components/auth/AuthProvider";
 import { MainSearch } from "@/components/common/MainSearch";
 import { LanguageSelector } from "@/components/common/LanguageSelector";
 import { LocalizedText } from "@/components/common/LocalizedText";
-import { getCurrentUser } from "@/lib/current-user";
-import { getUnreadNotificationCount } from "@/lib/notification-store";
-
-import Image from "next/image";
 import colinkLogo from "../../../logo/colink_logo.png";
 
-export async function MainNavbar() {
-  const user = await getCurrentUser();
-  const unreadCount = user ? await getUnreadNotificationCount(user.id) : 0;
+export function MainNavbar() {
+  const { firebaseUser, logout, profile } = useAuth();
+  const displayName = profile?.displayName ?? firebaseUser?.displayName ?? firebaseUser?.email?.split("@")[0] ?? "";
+  const photoURL = profile?.photoURL ?? firebaseUser?.photoURL ?? null;
+
+  async function onLogout() {
+    await logout();
+    window.location.assign("/");
+  }
 
   return (
     <header className="main-navbar" aria-label="Kumara main navigation">
@@ -17,27 +25,22 @@ export async function MainNavbar() {
         <Image className="main-brand-logo" src={colinkLogo} alt="" priority />
         Kumara
       </a>
-      <MainSearch />
+      <Suspense fallback={<div className="main-search" />}>
+        <MainSearch />
+      </Suspense>
       <nav className="main-actions" aria-label="주요 작업">
         <LanguageSelector />
         <a aria-label="알림" className="main-icon-button notification" href="/notifications">
           <BellIcon />
-          {unreadCount ? <span>{unreadCount > 99 ? "99+" : unreadCount}</span> : null}
         </a>
-        {user ? (
+        {firebaseUser ? (
           <details className="main-account-menu">
             <summary className="main-profile-button" aria-label="계정 메뉴">
-              {user.profile.profileImageUrl ? (
+              {photoURL ? (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  alt={`${user.nickname} 프로필`}
-                  src={user.profile.profileImageUrl}
-                  style={{
-                    transform: `translate(${user.profile.profileImageX}px, ${user.profile.profileImageY}px) scale(${user.profile.profileImageScale})`,
-                  }}
-                />
+                <img alt={`${displayName} 프로필`} src={photoURL} />
               ) : (
-                <span>{user.nickname.slice(0, 2).toUpperCase()}</span>
+                <span>{displayName.slice(0, 2).toUpperCase()}</span>
               )}
             </summary>
             <div className="main-account-popover" role="menu">
@@ -54,11 +57,9 @@ export async function MainNavbar() {
                 <a href="/my-page?tab=security" role="menuitem"><LocalizedText textKey="nav.security" /></a>
                 <a href="/my-page?tab=membership" role="menuitem"><LocalizedText textKey="nav.membership" /></a>
               </div>
-              <form action="/api/auth/logout" method="post">
-                <button role="menuitem" type="submit">
-                  <LocalizedText textKey="nav.logout" />
-                </button>
-              </form>
+              <button onClick={() => void onLogout()} role="menuitem" type="button">
+                <LocalizedText textKey="nav.logout" />
+              </button>
             </div>
           </details>
         ) : (

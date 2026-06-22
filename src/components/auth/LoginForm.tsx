@@ -1,10 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-import { Button } from "@/components/common/Button";
 import { GoogleAuthLink } from "@/components/auth/GoogleAuthLink";
+import { Button } from "@/components/common/Button";
+import { getFirebaseAuth } from "@/lib/firebase";
 
 type FormState = {
   error: string;
@@ -31,33 +33,24 @@ export function LoginForm() {
     setState({ error: "", loading: true });
 
     const form = new FormData(event.currentTarget);
-    const response = await fetch("/api/auth/login", {
-      credentials: "same-origin",
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        loginId: form.get("loginId"),
-        password: form.get("password"),
-        rememberMe: form.get("rememberMe") === "on",
-      }),
-    });
-    const result = (await response.json()) as { error?: string };
 
-    if (!response.ok) {
-      setState({ error: result.error ?? "로그인에 실패했습니다.", loading: false });
-      return;
+    try {
+      await signInWithEmailAndPassword(
+        getFirebaseAuth(),
+        String(form.get("loginId") ?? ""),
+        String(form.get("password") ?? ""),
+      );
+      window.location.assign("/my-page");
+    } catch (error) {
+      setState({
+        error: error instanceof Error ? error.message : "로그인에 실패했습니다.",
+        loading: false,
+      });
     }
-
-    window.location.assign("/my-page");
   }
 
   return (
-    <form
-      action="/api/auth/login"
-      className="auth-form"
-      method="post"
-      onSubmit={onSubmit}
-    >
+    <form className="auth-form" onSubmit={onSubmit}>
       <label>
         이메일
         <input
@@ -93,7 +86,7 @@ export function LoginForm() {
           <input name="rememberMe" type="checkbox" />
           <span>
             <strong>로그인 유지</strong>
-            <small>이 기기에서 30일 동안 유지</small>
+            <small>Firebase Auth가 이 브라우저의 로그인 상태를 유지합니다.</small>
           </span>
         </label>
         <div className="login-help-links">

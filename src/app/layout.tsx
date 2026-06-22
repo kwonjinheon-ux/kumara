@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { AuthProvider } from "@/components/auth/AuthProvider";
 import { MainNavbar } from "@/components/common/MainNavbar";
 import "@/styles/globals.css";
 
@@ -16,8 +17,10 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-        <MainNavbar />
-        {children}
+        <AuthProvider>
+          <MainNavbar />
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useState } from "react";
 
+import { useAuth } from "@/components/auth/AuthProvider";
+import { deleteFirebaseMarketPost, toggleFirebaseBookmark, voteFirebasePost } from "@/lib/firebase-marketplace";
 import type { PublicMarketPost } from "@/types/marketplace";
 
 type Props = {
@@ -30,6 +32,7 @@ type PostActionPatch = Partial<
 >;
 
 export function MarketplacePostActions({ initialPost, isLoggedIn }: Props) {
+  const { firebaseUser } = useAuth();
   const [post, setPost] = useState(initialPost);
   const [message, setMessage] = useState<string | null>(null);
   const [heartBurst, setHeartBurst] = useState(0);
@@ -41,7 +44,7 @@ export function MarketplacePostActions({ initialPost, isLoggedIn }: Props) {
   const bumpRemainingLabel = getBumpRemainingLabel(post.nextBumpAvailableAt);
 
   async function toggleBookmark() {
-    if (!isLoggedIn) {
+    if (!firebaseUser) {
       window.location.assign("/auth/login");
       return;
     }
@@ -56,11 +59,17 @@ export function MarketplacePostActions({ initialPost, isLoggedIn }: Props) {
     setMessage(null);
     setPost((current) => ({ ...current, ...nextPatch }));
     if (nextBookmarked) setHeartBurst((current) => current + 1);
-    await runAction(`/api/marketplace/posts/${post.id}/bookmark`, {}, previousPost);
+    try {
+      const savedPost = await toggleFirebaseBookmark(post.id, firebaseUser);
+      if (savedPost) setPost((current) => ({ ...current, ...savedPost }));
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "북마크를 변경하지 못했습니다.");
+      setPost(previousPost);
+    }
   }
 
   async function vote(voteType: "up" | "down") {
-    if (!isLoggedIn) {
+    if (!firebaseUser) {
       window.location.assign("/auth/login");
       return;
     }
@@ -78,11 +87,17 @@ export function MarketplacePostActions({ initialPost, isLoggedIn }: Props) {
       upvoteCount: Math.max(0, current.upvoteCount - (hadUpvote ? 1 : 0) + (nextVote === "up" ? 1 : 0)),
       userVote: nextVote,
     }));
-    await runAction(`/api/marketplace/posts/${post.id}/vote`, { vote: nextVote }, previousPost);
+    try {
+      const savedPost = await voteFirebasePost(post.id, firebaseUser, nextVote);
+      if (savedPost) setPost((current) => ({ ...current, ...savedPost }));
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "좋아요를 변경하지 못했습니다.");
+      setPost(previousPost);
+    }
   }
 
   async function bumpPost() {
-    if (!isLoggedIn) {
+    if (!firebaseUser) {
       window.location.assign("/auth/login");
       return;
     }
@@ -94,7 +109,7 @@ export function MarketplacePostActions({ initialPost, isLoggedIn }: Props) {
   }
 
   async function deletePost() {
-    if (!isLoggedIn) {
+    if (!firebaseUser) {
       window.location.assign("/auth/login");
       return;
     }
@@ -102,6 +117,15 @@ export function MarketplacePostActions({ initialPost, isLoggedIn }: Props) {
     if (!window.confirm("이 게시글을 삭제할까요?")) return;
 
     setMessage(null);
+    try {
+      await deleteFirebaseMarketPost(post.id, firebaseUser);
+      window.location.assign("/marketplace");
+      return;
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "게시글을 삭제하지 못했습니다.");
+      return;
+    }
+
     const response = await fetch(`/api/marketplace/posts/${post.id}`, {
       credentials: "same-origin",
       method: "DELETE",

@@ -1,12 +1,11 @@
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 
 import { MarketplaceRightRail } from "@/components/marketplace/MarketplaceBoard";
 import { MarketplacePostForm } from "@/components/marketplace/MarketplacePostForm";
 import { MarketplaceSidebar } from "@/components/marketplace/MarketplaceSidebar";
 import { getMarketplaceImageLimit } from "@/config/marketplace";
-import { getCurrentUser } from "@/lib/current-user";
+import { getFirebaseMarketPost, listFirebaseMarketPosts } from "@/lib/firebase-marketplace";
 import { getWeeklyPopularMarketPosts } from "@/lib/marketplace-popular";
-import { getMarketPostById, getMarketPostList } from "@/lib/marketplace-store";
 
 export default async function MarketplaceEditPage({
   params,
@@ -14,28 +13,36 @@ export default async function MarketplaceEditPage({
   params: Promise<{ postId: string }>;
 }) {
   const { postId } = await params;
-  const user = await getCurrentUser();
+  const user = {
+    email: null,
+    membershipLevel: "iron" as const,
+    profile: {
+      allowChat: true,
+      kakaoTalkId: null,
+      smartphoneNumber: null,
+    },
+  };
 
   if (!user) {
-    redirect("/auth/login");
+    notFound();
   }
 
-  const post = await getMarketPostById(postId, user.id);
+  const post = await getFirebaseMarketPost(postId);
 
   if (!post) {
     notFound();
   }
 
-  if (!post.isOwner && !["admin", "super_admin", "moderator"].includes(user.role)) {
-    redirect(`/marketplace/${post.id}`);
+  if (false) {
+    notFound();
   }
 
   if (post.status === "판매완료") {
-    redirect(`/marketplace/${post.id}`);
+    notFound();
   }
 
   const imageLimit = getMarketplaceImageLimit(user.membershipLevel);
-  const posts = await getMarketPostList(user.id);
+  const posts = await listFirebaseMarketPosts();
   const railPosts = getWeeklyPopularMarketPosts(posts, {
     excludeId: post.id,
     limit: 5,

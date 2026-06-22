@@ -1,21 +1,28 @@
-import { redirect } from "next/navigation";
+"use client";
 
-import { NotificationCenter } from "@/components/notifications/NotificationCenter";
-import { getCurrentUser } from "@/lib/current-user";
-import { getUserNotifications } from "@/lib/notification-store";
+import { useAuth } from "@/components/auth/AuthProvider";
 
-export default async function NotificationsPage() {
-  const user = await getCurrentUser();
+export default function NotificationsPage() {
+  const { firebaseUser, loading } = useAuth();
 
-  if (!user) {
-    redirect("/auth/login");
+  if (loading) {
+    return <main className="notifications-shell">Loading...</main>;
   }
 
-  const notifications = await getUserNotifications(user.id);
+  if (!firebaseUser) {
+    return (
+      <main className="notifications-shell">
+        <p className="form-error">로그인이 필요합니다.</p>
+      </main>
+    );
+  }
 
   return (
     <main className="notifications-shell">
-      <NotificationCenter initialNotifications={notifications} />
+      <section className="notification-center">
+        <h1>알림</h1>
+        <p>Firebase 알림 컬렉션 연동 준비 중입니다.</p>
+      </section>
     </main>
   );
 }
