@@ -1,0 +1,40 @@
+[
+  {
+    "userId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+    "keywords": [
+      "아이폰",
+      "갤럭시",
+      "자동차",
+      "샤넬"
+    ],
+    "categoryScope": [
+      "중고거래",
+      "부동산",
+      "구인구직"
+    ],
+    "notifyInApp": true,
+    "notifyEmail": false,
+    "notifyPush": false,
+    "isActive": true,
+    "updatedAt": "2026-04-30T01:18:13.355Z"
+  },
+  {
+    "userId": "a3ff7750-6607-41d4-880d-2ef486205059",
+    "keywords": [
+      "아이폰",
+      "샤넬"
+    ],
+    "categoryScope": [
+      "중고거래",
+      "부동산",
+      "구인구직",
+      "자유게시판",
+      "생활정보"
+    ],
+    "notifyInApp": true,
+    "notifyEmail": true,
+    "notifyPush": false,
+    "isActive": true,
+    "updatedAt": "2026-04-29T21:20:37.658Z"
+  }
+]

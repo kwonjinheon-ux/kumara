@@ -1,0 +1,96 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function userDoc() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid));
+    }
+
+    function isOwner(userId) {
+      return signedIn() && request.auth.uid == userId;
+    }
+
+    function hasRole(roles) {
+      return signedIn()
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid))
+        && userDoc().data.role in roles;
+    }
+
+    function isAdmin() {
+      return hasRole(["admin", "super_admin"]);
+    }
+
+    function isModerator() {
+      return hasRole(["moderator", "admin", "super_admin"]);
+    }
+
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isModerator();
+      allow create: if isOwner(userId)
+        && request.resource.data.role == "member"
+        && request.resource.data.membershipLevel == "iron"
+        && request.resource.data.status == "pending_verification"
+        && request.resource.data.keys().hasOnly([
+          "email", "nickname", "profile", "role", "membershipLevel", "status",
+          "isEmailVerified", "isPhoneVerified", "createdAt", "updatedAt"
+        ]);
+      allow update: if (
+          isOwner(userId)
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(["nickname", "profile", "updatedAt"])
+        ) || isAdmin();
+      allow delete: if isAdmin();
+
+      match /bookmarks/{postId} {
+        allow read, write: if isOwner(userId);
+      }
+    }
+
+    match /posts/{postId} {
+      allow read: if resource.data.visibility == "public" || isOwner(resource.data.userId) || isModerator();
+      allow create: if signedIn()
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.title is string
+        && request.resource.data.title.size() >= 2
+        && request.resource.data.title.size() <= 120
+        && request.resource.data.content is string
+        && request.resource.data.content.size() <= 12000
+        && request.resource.data.visibility in ["public", "draft"];
+      allow update: if (
+          isOwner(resource.data.userId)
+          && request.resource.data.userId == resource.data.userId
+          && !request.resource.data.diff(resource.data).affectedKeys().hasAny(["userId", "authorRole"])
+        ) || isModerator();
+      allow delete: if isOwner(resource.data.userId) || isModerator();
+
+      match /comments/{commentId} {
+        allow read: if get(/databases/$(database)/documents/posts/$(postId)).data.visibility == "public";
+        allow create: if signedIn()
+          && request.resource.data.userId == request.auth.uid
+          && request.resource.data.content is string
+          && request.resource.data.content.size() >= 1
+          && request.resource.data.content.size() <= 2000;
+        allow update, delete: if isOwner(resource.data.userId) || isModerator();
+      }
+    }
+
+    match /reports/{reportId} {
+      allow create: if signedIn()
+        && request.resource.data.reporterId == request.auth.uid
+        && request.resource.data.reason is string
+        && request.resource.data.reason.size() <= 120;
+      allow read, update, delete: if isModerator();
+    }
+
+    match /notifications/{notificationId} {
+      allow read: if isOwner(resource.data.userId) || isModerator();
+      allow create: if isModerator();
+      allow update: if isOwner(resource.data.userId)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(["status", "readAt"]);
+      allow delete: if isAdmin();
+    }
+  }
+}

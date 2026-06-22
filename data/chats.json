@@ -1,0 +1,1227 @@
+[
+  {
+    "id": "6b8b828e-b026-4702-af55-481ffdb1509c",
+    "postId": null,
+    "postTitle": "이거 되나요?",
+    "buyerId": "a3ff7750-6607-41d4-880d-2ef486205059",
+    "sellerId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+    "isBuyerBlocked": false,
+    "isSellerBlocked": false,
+    "createdAt": "2026-04-28T11:44:07.748Z",
+    "updatedAt": "2026-05-05T03:10:31.977Z",
+    "messages": [
+      {
+        "id": "0338bac8-830b-4d63-a934-20a1a2b2213a",
+        "chatId": "6b8b828e-b026-4702-af55-481ffdb1509c",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "이거 되나요 혹시??",
+        "isRead": true,
+        "createdAt": "2026-04-28T11:44:07.748Z"
+      },
+      {
+        "id": "c8a3daea-705e-42eb-a7f4-b13dc362f1ac",
+        "chatId": "6b8b828e-b026-4702-af55-481ffdb1509c",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "이거 잘 되나요??",
+        "isRead": true,
+        "createdAt": "2026-04-28T11:44:16.664Z"
+      },
+      {
+        "id": "2ba803a9-9a2f-41f5-a333-ef272f58befa",
+        "chatId": "6b8b828e-b026-4702-af55-481ffdb1509c",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "잘 되는지 확인 바랍니다!",
+        "isRead": true,
+        "createdAt": "2026-04-28T11:44:21.323Z"
+      },
+      {
+        "id": "8d2eb350-6352-4d51-a06a-66b1b9d1d6d3",
+        "chatId": "6b8b828e-b026-4702-af55-481ffdb1509c",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "오오 잘 됩니다!",
+        "isRead": false,
+        "createdAt": "2026-04-28T11:44:52.644Z"
+      },
+      {
+        "id": "911fb319-aa53-49b2-ad84-cfee3c22e30f",
+        "chatId": "6b8b828e-b026-4702-af55-481ffdb1509c",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "대박입니다!",
+        "isRead": false,
+        "createdAt": "2026-04-28T11:44:55.034Z"
+      },
+      {
+        "id": "04b5c92d-997b-49f1-87c6-0e118a6b0cb7",
+        "chatId": "6b8b828e-b026-4702-af55-481ffdb1509c",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "ㅋㅋㅋ",
+        "isRead": false,
+        "createdAt": "2026-04-28T11:45:07.812Z"
+      },
+      {
+        "id": "38aa5606-535a-4c26-aa75-d1836f80a802",
+        "chatId": "6b8b828e-b026-4702-af55-481ffdb1509c",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "아주 아주 잘됩니다",
+        "isRead": false,
+        "createdAt": "2026-04-28T11:45:10.999Z"
+      },
+      {
+        "id": "732e3c95-46cb-4329-9339-4242d7d2afc5",
+        "chatId": "6b8b828e-b026-4702-af55-481ffdb1509c",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "그런데 이거 이전 메시지 못보네요",
+        "isRead": false,
+        "createdAt": "2026-04-28T11:45:24.153Z"
+      },
+      {
+        "id": "84581dc7-e0ef-4bc7-b740-fbc568ec432c",
+        "chatId": "6b8b828e-b026-4702-af55-481ffdb1509c",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "ㅋㅋㅋㅋ",
+        "isRead": false,
+        "createdAt": "2026-04-28T11:48:47.506Z"
+      },
+      {
+        "id": "9af03c01-5c54-45f8-a94f-86e74668eae3",
+        "chatId": "6b8b828e-b026-4702-af55-481ffdb1509c",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "....",
+        "isRead": false,
+        "createdAt": "2026-04-28T19:58:16.981Z"
+      },
+      {
+        "id": "3db929ea-93c7-4cfc-ad66-d0dacbc88027",
+        "chatId": "6b8b828e-b026-4702-af55-481ffdb1509c",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "ㅋㅋㅋㅋ 잘됩니다",
+        "isRead": true,
+        "createdAt": "2026-04-29T21:19:51.996Z"
+      },
+      {
+        "id": "81c4e952-980e-4e56-8d6b-f5d24cc71998",
+        "chatId": "6b8b828e-b026-4702-af55-481ffdb1509c",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "그런데 왜요~~ 메롱",
+        "isRead": true,
+        "createdAt": "2026-04-29T21:19:57.810Z"
+      },
+      {
+        "id": "5ab13af5-9a8c-438a-bde5-6ecf40a3e540",
+        "chatId": "6b8b828e-b026-4702-af55-481ffdb1509c",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "ㅋㅋㅋㅋㅋㅋ 아주 잘됨",
+        "isRead": true,
+        "createdAt": "2026-04-29T21:20:01.274Z"
+      },
+      {
+        "id": "1bd7aeba-f8cc-4606-85ff-4d71719ed7d6",
+        "chatId": "6b8b828e-b026-4702-af55-481ffdb1509c",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "잘 되면 다행이지요",
+        "isRead": false,
+        "createdAt": "2026-04-30T09:14:49.885Z"
+      },
+      {
+        "id": "9816d059-bfdf-48a4-aae7-7090431dd768",
+        "chatId": "6b8b828e-b026-4702-af55-481ffdb1509c",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "잘 되나요?",
+        "isRead": false,
+        "createdAt": "2026-05-01T05:30:19.847Z"
+      },
+      {
+        "id": "6bb4808a-0d81-4810-bcdf-ce999ea396ac",
+        "chatId": "6b8b828e-b026-4702-af55-481ffdb1509c",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "ㅋㅋㅋ",
+        "isRead": false,
+        "createdAt": "2026-05-01T05:30:22.907Z"
+      },
+      {
+        "id": "ca392869-d9c6-4667-9567-43ed4232a28f",
+        "chatId": "6b8b828e-b026-4702-af55-481ffdb1509c",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "ㅋㅋㅋㅋ",
+        "isRead": false,
+        "createdAt": "2026-05-01T05:30:30.088Z"
+      },
+      {
+        "id": "781c5dee-6fea-4175-ba48-ad25ceb46a04",
+        "chatId": "6b8b828e-b026-4702-af55-481ffdb1509c",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "ㅏㅏㅏㅏ",
+        "isRead": false,
+        "createdAt": "2026-05-01T06:33:56.274Z"
+      },
+      {
+        "id": "76c3348d-a5e7-4d4c-8ea6-a2ecd43faff6",
+        "chatId": "6b8b828e-b026-4702-af55-481ffdb1509c",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "ll",
+        "isRead": false,
+        "createdAt": "2026-05-01T06:43:39.521Z"
+      },
+      {
+        "id": "4276b233-3451-4de8-a054-1557a14ae3e5",
+        "chatId": "6b8b828e-b026-4702-af55-481ffdb1509c",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "zzz",
+        "isRead": false,
+        "createdAt": "2026-05-02T03:41:26.836Z"
+      },
+      {
+        "id": "549bc5a3-e0f4-4fe4-9157-aa5d30b57b2e",
+        "chatId": "6b8b828e-b026-4702-af55-481ffdb1509c",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "zzzzz",
+        "isRead": false,
+        "createdAt": "2026-05-02T03:41:28.645Z"
+      },
+      {
+        "id": "5389111d-6ecd-4d0a-b9cd-87cdd2139a58",
+        "chatId": "6b8b828e-b026-4702-af55-481ffdb1509c",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "dsdsdasdasdasdsadasdas",
+        "isRead": false,
+        "createdAt": "2026-05-02T03:41:32.074Z"
+      },
+      {
+        "id": "3b65e86e-7af0-4e6a-b4ea-c5daedb13f48",
+        "chatId": "6b8b828e-b026-4702-af55-481ffdb1509c",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "dsdasdasdasd",
+        "isRead": false,
+        "createdAt": "2026-05-02T03:41:33.981Z"
+      },
+      {
+        "id": "1dc50644-2fdd-4af6-977c-4ae7259915d3",
+        "chatId": "6b8b828e-b026-4702-af55-481ffdb1509c",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "집 파세요",
+        "isRead": false,
+        "createdAt": "2026-05-05T03:10:25.544Z"
+      },
+      {
+        "id": "d21a2603-bd2e-435d-9b66-86c54fd2a561",
+        "chatId": "6b8b828e-b026-4702-af55-481ffdb1509c",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "김밥 파세요",
+        "isRead": false,
+        "createdAt": "2026-05-05T03:10:29.651Z"
+      },
+      {
+        "id": "e387f735-b8ef-4801-99d3-2039d37119de",
+        "chatId": "6b8b828e-b026-4702-af55-481ffdb1509c",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "ㅋㅋㅋㅋㅋ",
+        "isRead": false,
+        "createdAt": "2026-05-05T03:10:31.977Z"
+      }
+    ],
+    "buyerLeftAt": "2026-04-29T21:55:34.669Z"
+  },
+  {
+    "id": "4bb7255d-bef7-40f5-a131-33899911f611",
+    "postId": "7aedeaf5-13c5-4e53-bacb-a83e8d4a3c4c",
+    "postTitle": "샤넬 백팝니다.",
+    "buyerId": "a3ff7750-6607-41d4-880d-2ef486205059",
+    "sellerId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+    "isBuyerBlocked": false,
+    "isSellerBlocked": false,
+    "createdAt": "2026-04-29T20:40:03.476Z",
+    "updatedAt": "2026-05-06T05:46:33.752Z",
+    "messages": [
+      {
+        "id": "2f8f9dd5-a8a9-4789-818f-be0acb334c25",
+        "chatId": "4bb7255d-bef7-40f5-a131-33899911f611",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "샤넬 백팝니다. 글 보고 연락드립니다.",
+        "isRead": true,
+        "createdAt": "2026-04-29T20:40:03.476Z"
+      },
+      {
+        "id": "3ee846bc-bd13-47fc-a1af-18132a25b818",
+        "chatId": "4bb7255d-bef7-40f5-a131-33899911f611",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "안녕하세요",
+        "isRead": true,
+        "createdAt": "2026-04-29T20:40:20.734Z"
+      },
+      {
+        "id": "28cfa578-c7b0-41db-b538-df77c72fbc39",
+        "chatId": "4bb7255d-bef7-40f5-a131-33899911f611",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "정말로 여락 드립니다",
+        "isRead": true,
+        "createdAt": "2026-04-29T20:40:24.365Z"
+      },
+      {
+        "id": "e40faec2-b142-4ad5-bb36-47bdc075046e",
+        "chatId": "4bb7255d-bef7-40f5-a131-33899911f611",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "아직 파나요?",
+        "isRead": true,
+        "createdAt": "2026-04-29T20:40:28.309Z"
+      },
+      {
+        "id": "396a2c4f-7760-4db2-962c-a408fa15ba7a",
+        "chatId": "4bb7255d-bef7-40f5-a131-33899911f611",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "샤넬 백팝니다. 글 보고 연락드립니다.",
+        "isRead": true,
+        "createdAt": "2026-04-29T20:40:49.542Z"
+      },
+      {
+        "id": "7e612dde-d843-4104-a9ab-5958bd474f2d",
+        "chatId": "4bb7255d-bef7-40f5-a131-33899911f611",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "ㅋㅋㅋ",
+        "isRead": true,
+        "createdAt": "2026-04-29T21:46:38.046Z"
+      },
+      {
+        "id": "8f129bcf-c41b-4f48-b14f-5e236f7f6d27",
+        "chatId": "4bb7255d-bef7-40f5-a131-33899911f611",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "샤넬 백팝니다. 글 보고 연락드립니다.",
+        "isRead": true,
+        "createdAt": "2026-04-29T23:17:08.087Z"
+      },
+      {
+        "id": "1e048c74-73be-498f-81bb-a8ee0975d093",
+        "chatId": "4bb7255d-bef7-40f5-a131-33899911f611",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "샤넬 백팝니다. 글 보고 연락드립니다.",
+        "isRead": true,
+        "createdAt": "2026-04-29T23:44:34.828Z"
+      },
+      {
+        "id": "49bfc06c-fed1-4018-89d6-633612aa40b0",
+        "chatId": "4bb7255d-bef7-40f5-a131-33899911f611",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "네 연락 주세요",
+        "isRead": true,
+        "createdAt": "2026-04-30T09:15:10.532Z"
+      },
+      {
+        "id": "e23d4506-7c6a-4abe-b814-126098d1677b",
+        "chatId": "4bb7255d-bef7-40f5-a131-33899911f611",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "샤낼",
+        "isRead": true,
+        "createdAt": "2026-04-30T09:15:15.353Z"
+      },
+      {
+        "id": "cf634d14-bac9-4dbf-a0f8-d128a47d29d4",
+        "chatId": "4bb7255d-bef7-40f5-a131-33899911f611",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "백 너무나 좋아요",
+        "isRead": true,
+        "createdAt": "2026-04-30T09:15:19.183Z"
+      },
+      {
+        "id": "2c51acdd-e163-44dc-a391-27f0eacc379e",
+        "chatId": "4bb7255d-bef7-40f5-a131-33899911f611",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "zzzzz",
+        "isRead": true,
+        "createdAt": "2026-04-30T19:40:08.618Z"
+      },
+      {
+        "id": "805965d3-f882-4917-8c74-90c048597b1b",
+        "chatId": "4bb7255d-bef7-40f5-a131-33899911f611",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "ㅋㅋㅋㅋㅋ 이거 커서가 너무 느려",
+        "isRead": true,
+        "createdAt": "2026-04-30T19:40:17.814Z"
+      },
+      {
+        "id": "7020a405-1c98-4151-a24f-4f0a87f9fe02",
+        "chatId": "4bb7255d-bef7-40f5-a131-33899911f611",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "ㅋㅋㅋㅋ",
+        "isRead": true,
+        "createdAt": "2026-04-30T19:40:23.705Z"
+      },
+      {
+        "id": "53b7177f-5808-4992-9fd5-51a0ebc87451",
+        "chatId": "4bb7255d-bef7-40f5-a131-33899911f611",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "zzzzz",
+        "isRead": true,
+        "createdAt": "2026-05-01T05:29:43.582Z"
+      },
+      {
+        "id": "f553c98a-3125-41c0-a58b-0375418dcb31",
+        "chatId": "4bb7255d-bef7-40f5-a131-33899911f611",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "백 파세요",
+        "isRead": true,
+        "createdAt": "2026-05-05T03:10:39.769Z"
+      },
+      {
+        "id": "ed293057-ba5b-4749-8436-8401200fd3cc",
+        "chatId": "4bb7255d-bef7-40f5-a131-33899911f611",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "샤넬 백팝니다. 글 보고 연락드립니다.",
+        "isRead": true,
+        "createdAt": "2026-05-06T05:46:19.343Z"
+      },
+      {
+        "id": "80e9a60d-f4d9-492a-a57b-e4c12073828c",
+        "chatId": "4bb7255d-bef7-40f5-a131-33899911f611",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "ㅋㅋㅋㅋㅋㅋ 잘 되나요",
+        "isRead": true,
+        "createdAt": "2026-05-06T05:46:28.159Z"
+      },
+      {
+        "id": "072db633-233b-474a-b9ad-c2c4d697a159",
+        "chatId": "4bb7255d-bef7-40f5-a131-33899911f611",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "ㅋㅋㅋㅋㅋㅋ",
+        "isRead": true,
+        "createdAt": "2026-05-06T05:46:33.752Z"
+      }
+    ],
+    "buyerLeftAt": null
+  },
+  {
+    "id": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+    "postId": "d198f617-ca64-4358-9600-7c94b1232718",
+    "postTitle": "집 팝니다.",
+    "buyerId": "a3ff7750-6607-41d4-880d-2ef486205059",
+    "sellerId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+    "isBuyerBlocked": false,
+    "isSellerBlocked": false,
+    "createdAt": "2026-04-29T20:46:05.881Z",
+    "updatedAt": "2026-05-06T05:46:39.061Z",
+    "messages": [
+      {
+        "id": "a178b91f-ab9a-4cd4-ad36-a9399746f8ae",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "집 팝니다. 글 보고 연락드립니다.",
+        "isRead": true,
+        "createdAt": "2026-04-29T20:46:05.881Z"
+      },
+      {
+        "id": "bd827c46-ca49-4f4e-be58-1c855a142449",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "집 진짜 파나요",
+        "isRead": true,
+        "createdAt": "2026-04-29T20:46:17.241Z"
+      },
+      {
+        "id": "e1c904e9-9f43-48db-b547-a18b264a1f4c",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "정말이지 파냐구요? 님아 댓글 좀",
+        "isRead": true,
+        "createdAt": "2026-04-29T20:46:58.372Z"
+      },
+      {
+        "id": "4c850c0f-faa6-4bca-9b74-5a0f4b3bc6c7",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "ㅋㅋㅋ",
+        "isRead": true,
+        "createdAt": "2026-04-29T20:47:00.695Z"
+      },
+      {
+        "id": "105c310b-7d9a-474e-8240-072ada17adec",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "ㅋㅋ",
+        "isRead": true,
+        "createdAt": "2026-04-29T20:47:01.078Z"
+      },
+      {
+        "id": "ae267db6-7c14-4d2a-906d-b4eadc007577",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "ㅋ",
+        "isRead": true,
+        "createdAt": "2026-04-29T20:47:01.354Z"
+      },
+      {
+        "id": "77448d04-727d-4251-b544-f932bdd0aa3e",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "ㅋ",
+        "isRead": true,
+        "createdAt": "2026-04-29T20:47:01.669Z"
+      },
+      {
+        "id": "88d54ed3-d21f-4e59-a3c6-8340d702f75b",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "ㅋ",
+        "isRead": true,
+        "createdAt": "2026-04-29T20:47:02.756Z"
+      },
+      {
+        "id": "eafc3a9a-6e99-494f-ba65-ac37f7df980d",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "팝니다",
+        "isRead": true,
+        "createdAt": "2026-04-30T01:21:07.284Z"
+      },
+      {
+        "id": "9e148f91-7905-4a59-8ff7-e173ff89a96a",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "ㅋㅋㅋㅋㅋ",
+        "isRead": true,
+        "createdAt": "2026-04-30T01:21:08.731Z"
+      },
+      {
+        "id": "cb87d24b-b5c5-41b5-8abe-f8b52e195247",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "이거 사실건가요???",
+        "isRead": true,
+        "createdAt": "2026-04-30T01:21:12.942Z"
+      },
+      {
+        "id": "ed7da20c-96f2-45fc-bae2-0a3962fb2aab",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "zzzzzzz",
+        "isRead": true,
+        "createdAt": "2026-04-30T01:28:08.816Z"
+      },
+      {
+        "id": "1aab8476-2251-4a84-b4e9-e227bae0c60f",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "정말로 파나요",
+        "isRead": true,
+        "createdAt": "2026-04-30T01:28:15.743Z"
+      },
+      {
+        "id": "2b58f367-9c56-4dc5-a62d-a5fc3cd2b0d0",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "뭘 파나요",
+        "isRead": true,
+        "createdAt": "2026-04-30T01:28:17.698Z"
+      },
+      {
+        "id": "f92b2876-ab33-48f6-a847-e1c6da2a02f6",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "ㅋㅋㅋㅋㅋ",
+        "isRead": true,
+        "createdAt": "2026-04-30T01:28:18.971Z"
+      },
+      {
+        "id": "efa8ead0-5508-473c-84b5-4daec33a842a",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "네 그러면 전화번호 주세요!",
+        "isRead": true,
+        "createdAt": "2026-04-30T01:28:25.445Z"
+      },
+      {
+        "id": "0a106fe1-24ed-492e-993d-785e46332ab5",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "hello hi there",
+        "isRead": true,
+        "createdAt": "2026-04-30T02:12:43.231Z"
+      },
+      {
+        "id": "e0340b09-e8e9-4408-9e05-e5df841f1eea",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "왜 이리 느리지",
+        "isRead": true,
+        "createdAt": "2026-04-30T02:12:54.621Z"
+      },
+      {
+        "id": "22d02cd1-de26-4351-91d8-a33fc358bb36",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "ㅋㅋㅋㅋㅋ",
+        "isRead": true,
+        "createdAt": "2026-04-30T02:14:15.052Z"
+      },
+      {
+        "id": "03aa18b0-bdba-40b0-b555-c98680997abe",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "왜 느리지 모바일에선",
+        "isRead": true,
+        "createdAt": "2026-04-30T02:14:49.170Z"
+      },
+      {
+        "id": "1d745cf5-1d0f-43b1-8830-37e212c0726d",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "이상하구만",
+        "isRead": true,
+        "createdAt": "2026-04-30T02:14:53.663Z"
+      },
+      {
+        "id": "73780a58-7707-4d38-95ba-3b5ba1b953b2",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "안산다구요???",
+        "isRead": true,
+        "createdAt": "2026-04-30T02:30:46.229Z"
+      },
+      {
+        "id": "324a0d95-d2ac-4bdb-8c44-32dd8da6f12b",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "왜 안사죠",
+        "isRead": true,
+        "createdAt": "2026-04-30T02:30:55.368Z"
+      },
+      {
+        "id": "24b4156f-2650-409b-ba10-881947c0226c",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "ㅋㅋㅋㅋ",
+        "isRead": true,
+        "createdAt": "2026-04-30T02:30:57.469Z"
+      },
+      {
+        "id": "0f8128a7-942c-4f75-86e4-863ecb6129a7",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "ㅋㅋㅋㅋㅋ",
+        "isRead": true,
+        "createdAt": "2026-04-30T02:31:08.108Z"
+      },
+      {
+        "id": "8ed7c170-c395-4487-afbf-480b953de68b",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "zzzz",
+        "isRead": true,
+        "createdAt": "2026-04-30T02:42:19.940Z"
+      },
+      {
+        "id": "6026a748-a42a-4d43-9384-e6b3c5627570",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "zzzzz",
+        "isRead": true,
+        "createdAt": "2026-04-30T02:42:33.958Z"
+      },
+      {
+        "id": "32553c45-8cca-4187-a7fd-02aade7f72c7",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "왜 잘 안되나",
+        "isRead": true,
+        "createdAt": "2026-04-30T02:42:38.403Z"
+      },
+      {
+        "id": "cdd893e4-5a93-4187-b7b7-6ce3d966c8a0",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "zzzz",
+        "isRead": true,
+        "createdAt": "2026-04-30T09:14:03.406Z"
+      },
+      {
+        "id": "b3809d9c-976c-4526-9fef-f8168c55fdd0",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "잘 되나",
+        "isRead": true,
+        "createdAt": "2026-04-30T09:14:08.548Z"
+      },
+      {
+        "id": "727232d4-4f0f-417e-822b-1c02ffc73d37",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "ㅋㅋㅋㅋ",
+        "isRead": true,
+        "createdAt": "2026-04-30T09:14:21.526Z"
+      },
+      {
+        "id": "94b2b2ab-7662-4964-85a0-c4591c57f6ff",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "ㅋㅋㅋㅋㅋ",
+        "isRead": true,
+        "createdAt": "2026-05-01T05:30:33.071Z"
+      },
+      {
+        "id": "124c29c8-aa4f-46fc-b4d9-ee2f9e4e5825",
+        "chatId": "ccf7ccc8-a4ab-4761-bdc4-4e8f48b8ced9",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "ㅋㅋㅋㅋㅋ",
+        "isRead": true,
+        "createdAt": "2026-05-06T05:46:39.061Z"
+      }
+    ]
+  },
+  {
+    "id": "72f4691a-c6ee-4998-99ef-60df10dd9c81",
+    "postId": "078d754a-8621-4686-a061-f5ea72e90a87",
+    "postTitle": "아이폰 13 판매합니다.",
+    "buyerId": "a3ff7750-6607-41d4-880d-2ef486205059",
+    "sellerId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+    "isBuyerBlocked": false,
+    "isSellerBlocked": false,
+    "buyerLeftAt": null,
+    "sellerLeftAt": null,
+    "createdAt": "2026-04-29T22:11:49.238Z",
+    "updatedAt": "2026-05-06T05:46:43.839Z",
+    "messages": [
+      {
+        "id": "45416b0d-570c-42e5-b980-4b4a421cc831",
+        "chatId": "72f4691a-c6ee-4998-99ef-60df10dd9c81",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "아이폰 13 판매합니다. 글 보고 연락드립니다.",
+        "isRead": true,
+        "createdAt": "2026-04-29T22:11:49.238Z"
+      },
+      {
+        "id": "61bec9da-8856-4d8e-95ac-81070dc91d11",
+        "chatId": "72f4691a-c6ee-4998-99ef-60df10dd9c81",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "아이폰 이거 파나요??",
+        "isRead": true,
+        "createdAt": "2026-04-29T22:11:57.293Z"
+      },
+      {
+        "id": "c9fb56ba-55a6-4a7c-a9ef-4e90ffc48100",
+        "chatId": "72f4691a-c6ee-4998-99ef-60df10dd9c81",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "ㅋㅋㅋㅋ 뭐하누",
+        "isRead": true,
+        "createdAt": "2026-04-30T01:54:28.653Z"
+      },
+      {
+        "id": "f353aed3-7569-4b6e-8fc0-b8defda12f0e",
+        "chatId": "72f4691a-c6ee-4998-99ef-60df10dd9c81",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "가나다라",
+        "isRead": true,
+        "createdAt": "2026-04-30T01:54:32.058Z"
+      },
+      {
+        "id": "5556bae8-30bd-4dc2-aaa6-86a63b00e51c",
+        "chatId": "72f4691a-c6ee-4998-99ef-60df10dd9c81",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "마바사",
+        "isRead": true,
+        "createdAt": "2026-04-30T01:54:34.144Z"
+      },
+      {
+        "id": "4d27197e-064c-4bc4-a50e-15e826086abc",
+        "chatId": "72f4691a-c6ee-4998-99ef-60df10dd9c81",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "빨리 팔아줘",
+        "isRead": true,
+        "createdAt": "2026-04-30T02:15:00.135Z"
+      },
+      {
+        "id": "01f74619-9dc8-4813-ab1b-bb08d63b3f7d",
+        "chatId": "72f4691a-c6ee-4998-99ef-60df10dd9c81",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "그러게 왜 안되지",
+        "isRead": true,
+        "createdAt": "2026-04-30T02:42:45.600Z"
+      },
+      {
+        "id": "a0b2a38b-d923-4aad-8d3f-0341952d67e8",
+        "chatId": "72f4691a-c6ee-4998-99ef-60df10dd9c81",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "ㅋㅋㅋㅋ",
+        "isRead": true,
+        "createdAt": "2026-04-30T03:39:59.487Z"
+      },
+      {
+        "id": "36b082f6-71de-45d0-94b0-7c600737b384",
+        "chatId": "72f4691a-c6ee-4998-99ef-60df10dd9c81",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "잘되나",
+        "isRead": true,
+        "createdAt": "2026-04-30T03:40:08.624Z"
+      },
+      {
+        "id": "128e6c74-4fda-4c92-b979-89faf774ea19",
+        "chatId": "72f4691a-c6ee-4998-99ef-60df10dd9c81",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "ㅋㅋㅋㅋ",
+        "isRead": true,
+        "createdAt": "2026-04-30T03:40:15.891Z"
+      },
+      {
+        "id": "56469778-b9f4-4c2b-aa2a-865b6d2a1922",
+        "chatId": "72f4691a-c6ee-4998-99ef-60df10dd9c81",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "ㅋㅋㅋㅋㅋ",
+        "isRead": true,
+        "createdAt": "2026-04-30T03:41:15.679Z"
+      },
+      {
+        "id": "c51bcae8-e7e1-4177-8b91-1321f23894ea",
+        "chatId": "72f4691a-c6ee-4998-99ef-60df10dd9c81",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "ㅋㅋㅋㅋㅋㅋㅋ",
+        "isRead": true,
+        "createdAt": "2026-04-30T03:41:25.325Z"
+      },
+      {
+        "id": "3d5a7b4c-8431-4a0f-8aa9-ac79807443f1",
+        "chatId": "72f4691a-c6ee-4998-99ef-60df10dd9c81",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "이상하네",
+        "isRead": true,
+        "createdAt": "2026-04-30T03:41:36.298Z"
+      },
+      {
+        "id": "d19c7dca-9ddb-42f7-a23b-255d615a84ac",
+        "chatId": "72f4691a-c6ee-4998-99ef-60df10dd9c81",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "ㅋㅋㅋㅋㅋ",
+        "isRead": true,
+        "createdAt": "2026-04-30T09:03:42.151Z"
+      },
+      {
+        "id": "e7725aad-f3fa-4ed7-be00-47e50f3e08d6",
+        "chatId": "72f4691a-c6ee-4998-99ef-60df10dd9c81",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "잘 되나요",
+        "isRead": true,
+        "createdAt": "2026-04-30T09:03:47.623Z"
+      },
+      {
+        "id": "b65f580e-3d96-43ad-abfb-4fa230a62025",
+        "chatId": "72f4691a-c6ee-4998-99ef-60df10dd9c81",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "ㅋㅋㅋㅋㅋ",
+        "isRead": true,
+        "createdAt": "2026-04-30T09:03:55.086Z"
+      },
+      {
+        "id": "7b9c8f2d-bcaf-4fdc-9722-e9bfdb915c7a",
+        "chatId": "72f4691a-c6ee-4998-99ef-60df10dd9c81",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "ㅇㅇㅇㅇ",
+        "isRead": true,
+        "createdAt": "2026-04-30T09:14:32.301Z"
+      },
+      {
+        "id": "691c278c-be42-4837-8840-950f78fd7a62",
+        "chatId": "72f4691a-c6ee-4998-99ef-60df10dd9c81",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "ㅋㅋㅋㅋ",
+        "isRead": true,
+        "createdAt": "2026-04-30T09:14:36.087Z"
+      },
+      {
+        "id": "71d5ff92-edf0-4dd4-b668-41feaf1ff3d1",
+        "chatId": "72f4691a-c6ee-4998-99ef-60df10dd9c81",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "zzzzzz",
+        "isRead": true,
+        "createdAt": "2026-05-01T05:29:50.472Z"
+      },
+      {
+        "id": "675e5252-38b0-4d14-9a87-79823fe166ad",
+        "chatId": "72f4691a-c6ee-4998-99ef-60df10dd9c81",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "zzzzz",
+        "isRead": true,
+        "createdAt": "2026-05-01T05:29:52.502Z"
+      },
+      {
+        "id": "41ebf286-e202-464e-ac8c-1b87aebddaca",
+        "chatId": "72f4691a-c6ee-4998-99ef-60df10dd9c81",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "123",
+        "isRead": true,
+        "createdAt": "2026-05-01T05:29:54.745Z"
+      },
+      {
+        "id": "1a61bad2-e191-4e98-b66f-3b6a4ee7143f",
+        "chatId": "72f4691a-c6ee-4998-99ef-60df10dd9c81",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "123",
+        "isRead": true,
+        "createdAt": "2026-05-01T05:30:01.797Z"
+      },
+      {
+        "id": "fa990cfa-aa36-4ead-b079-43f5688edefc",
+        "chatId": "72f4691a-c6ee-4998-99ef-60df10dd9c81",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "ㅋㅋㅋㅋ",
+        "isRead": true,
+        "createdAt": "2026-05-01T05:30:35.493Z"
+      },
+      {
+        "id": "1c0acfac-7c43-4c17-a59c-984cc0b9393e",
+        "chatId": "72f4691a-c6ee-4998-99ef-60df10dd9c81",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
+        "isRead": true,
+        "createdAt": "2026-05-06T05:46:43.839Z"
+      }
+    ]
+  },
+  {
+    "id": "9866bb89-832f-4ab4-a182-141a4a516891",
+    "postId": "f98806bd-b8cf-4dd8-b17d-c6297b196299",
+    "postTitle": "방탄소년단 티켓 팝니다.",
+    "buyerId": "a3ff7750-6607-41d4-880d-2ef486205059",
+    "sellerId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+    "isBuyerBlocked": false,
+    "isSellerBlocked": false,
+    "buyerLeftAt": null,
+    "sellerLeftAt": null,
+    "createdAt": "2026-05-06T10:32:13.491Z",
+    "updatedAt": "2026-05-08T05:33:42.829Z",
+    "messages": [
+      {
+        "id": "4d8576bf-ac68-4d21-a83d-2c7d30163beb",
+        "chatId": "9866bb89-832f-4ab4-a182-141a4a516891",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "방탄소년단 티켓 팝니다. 글 보고 연락드립니다.",
+        "isRead": true,
+        "createdAt": "2026-05-06T10:32:13.491Z"
+      },
+      {
+        "id": "392cc547-9e97-487d-bb19-258670a8ef93",
+        "chatId": "9866bb89-832f-4ab4-a182-141a4a516891",
+        "senderId": "a3ff7750-6607-41d4-880d-2ef486205059",
+        "message": "zzzzzzz",
+        "isRead": true,
+        "createdAt": "2026-05-06T10:32:23.559Z"
+      },
+      {
+        "id": "62654e7e-bc9b-4e90-a968-09d64a3c6c26",
+        "chatId": "9866bb89-832f-4ab4-a182-141a4a516891",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "ㅋㅋㅋㅋㅋㅋ 살래요",
+        "isRead": false,
+        "createdAt": "2026-05-08T05:33:35.480Z"
+      },
+      {
+        "id": "c049266f-ee0d-411c-bd56-4992479d2d07",
+        "chatId": "9866bb89-832f-4ab4-a182-141a4a516891",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "너무나 좋은데",
+        "isRead": false,
+        "createdAt": "2026-05-08T05:33:39.874Z"
+      },
+      {
+        "id": "71d3d617-e8c9-43b5-8d65-ac73f5ced547",
+        "chatId": "9866bb89-832f-4ab4-a182-141a4a516891",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "ㅋㅋㅋㅋㅋㅋ",
+        "isRead": false,
+        "createdAt": "2026-05-08T05:33:42.829Z"
+      }
+    ]
+  },
+  {
+    "id": "9f41729b-5321-4ef4-a358-e1fca71793a3",
+    "postId": "db2a963e-83b0-4961-af93-6bc906cb90c5",
+    "postTitle": "맥북 팝니다. 이거 사가지고 가세요",
+    "buyerId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+    "sellerId": "a3ff7750-6607-41d4-880d-2ef486205059",
+    "isBuyerBlocked": false,
+    "isSellerBlocked": false,
+    "buyerLeftAt": "2026-06-19T10:49:22.196Z",
+    "sellerLeftAt": null,
+    "createdAt": "2026-05-08T23:11:37.061Z",
+    "updatedAt": "2026-06-19T10:49:22.196Z",
+    "messages": [
+      {
+        "id": "1d9db9f1-cd09-4ed9-a41d-a82422e30d14",
+        "chatId": "9f41729b-5321-4ef4-a358-e1fca71793a3",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "맥북 팝니다. 이거 사가지고 가세요 글 보고 연락드립니다.",
+        "isRead": false,
+        "createdAt": "2026-05-08T23:11:37.061Z"
+      },
+      {
+        "id": "d5fc7e72-5eb5-4329-94c6-e8d5ff9db33f",
+        "chatId": "9f41729b-5321-4ef4-a358-e1fca71793a3",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "맥북 팝니다. 이거 사가지고 가세요 글 보고 연락드립니다.",
+        "isRead": false,
+        "createdAt": "2026-05-08T23:11:40.140Z"
+      },
+      {
+        "id": "9fcb221e-522a-4a68-932e-a7ee68134322",
+        "chatId": "9f41729b-5321-4ef4-a358-e1fca71793a3",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "jjjj",
+        "isRead": false,
+        "createdAt": "2026-05-08T23:11:44.000Z"
+      }
+    ]
+  },
+  {
+    "id": "40d6ada4-febf-45ec-a586-edbd5c829eb2",
+    "postId": "2943f514-6a31-4436-a0f4-8e5348a517c8",
+    "postTitle": "삼성 tv 팝니다.",
+    "buyerId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+    "sellerId": "a3ff7750-6607-41d4-880d-2ef486205059",
+    "isBuyerBlocked": false,
+    "isSellerBlocked": false,
+    "buyerLeftAt": "2026-06-19T10:49:26.104Z",
+    "sellerLeftAt": null,
+    "createdAt": "2026-05-11T10:33:58.784Z",
+    "updatedAt": "2026-06-19T10:49:26.104Z",
+    "messages": [
+      {
+        "id": "42ff4e42-c7c1-405d-93cf-00e8a0f2f75d",
+        "chatId": "40d6ada4-febf-45ec-a586-edbd5c829eb2",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "삼성 tv 팝니다. 글 보고 연락드립니다.",
+        "isRead": false,
+        "createdAt": "2026-05-11T10:33:58.784Z"
+      },
+      {
+        "id": "d8c76d3a-da7c-4cef-8092-b4885904c115",
+        "chatId": "40d6ada4-febf-45ec-a586-edbd5c829eb2",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "ㅎㅎㅎㅎ",
+        "isRead": false,
+        "createdAt": "2026-05-11T10:34:02.879Z"
+      }
+    ]
+  },
+  {
+    "id": "0d2b560c-83db-41bb-b17b-108bcf66a680",
+    "postId": "74b675d8-ceb7-4ad3-9252-f12e8b7ed8aa",
+    "postTitle": "dddd",
+    "buyerId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+    "sellerId": "a3ff7750-6607-41d4-880d-2ef486205059",
+    "isBuyerBlocked": false,
+    "isSellerBlocked": false,
+    "buyerLeftAt": null,
+    "sellerLeftAt": null,
+    "createdAt": "2026-06-19T01:18:07.928Z",
+    "updatedAt": "2026-06-19T10:49:31.264Z",
+    "messages": [
+      {
+        "id": "369ce5a7-ab96-46db-a0d1-21215cad9400",
+        "chatId": "0d2b560c-83db-41bb-b17b-108bcf66a680",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "dddd 글 보고 연락드립니다.",
+        "isRead": false,
+        "createdAt": "2026-06-19T01:18:07.928Z"
+      },
+      {
+        "id": "1334360d-c518-4ae4-ae47-3ff8481337a5",
+        "chatId": "0d2b560c-83db-41bb-b17b-108bcf66a680",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "팔렸나요",
+        "isRead": false,
+        "createdAt": "2026-06-19T01:18:30.143Z"
+      },
+      {
+        "id": "6ea24eef-3de7-49e8-958a-32fd230453d8",
+        "chatId": "0d2b560c-83db-41bb-b17b-108bcf66a680",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "dddd 글 보고 연락드립니다.",
+        "isRead": false,
+        "createdAt": "2026-06-19T10:42:21.321Z"
+      },
+      {
+        "id": "c96f959c-8d7b-46a8-822d-11b5a45a5546",
+        "chatId": "0d2b560c-83db-41bb-b17b-108bcf66a680",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "안녕하십니까",
+        "isRead": false,
+        "createdAt": "2026-06-19T10:42:28.053Z"
+      },
+      {
+        "id": "f426e659-bd40-40bd-a4cc-4a3b36a223bb",
+        "chatId": "0d2b560c-83db-41bb-b17b-108bcf66a680",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "잘되고 있나요",
+        "isRead": false,
+        "createdAt": "2026-06-19T10:42:30.065Z"
+      },
+      {
+        "id": "cace026d-14eb-4e80-a5f7-79a16d91dc12",
+        "chatId": "0d2b560c-83db-41bb-b17b-108bcf66a680",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "잘되는지 체크해주시길 바랍니다!!!",
+        "isRead": false,
+        "createdAt": "2026-06-19T10:42:36.190Z"
+      },
+      {
+        "id": "3bff4d17-da5b-4a8f-9fef-8d22ae2f8a4d",
+        "chatId": "0d2b560c-83db-41bb-b17b-108bcf66a680",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "메시지가 잘 되네요 ㅋㅋㅋ",
+        "isRead": false,
+        "createdAt": "2026-06-19T10:48:53.089Z"
+      },
+      {
+        "id": "d1dff69a-bc99-465a-8974-75e41aab9c98",
+        "chatId": "0d2b560c-83db-41bb-b17b-108bcf66a680",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "커서도 잘 따라 붙구요!!",
+        "isRead": false,
+        "createdAt": "2026-06-19T10:48:56.190Z"
+      },
+      {
+        "id": "4cfcf151-7205-4c55-bbb3-15ec15cfd19a",
+        "chatId": "0d2b560c-83db-41bb-b17b-108bcf66a680",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "잘 됩니다!!",
+        "isRead": false,
+        "createdAt": "2026-06-19T10:49:31.264Z"
+      }
+    ]
+  },
+  {
+    "id": "f58f8517-5508-4fe9-a375-aba1778d9e5c",
+    "postId": "df614739-cca9-4d8e-9cce-143c9737de64",
+    "postTitle": "아이폰 18 판매합니다.",
+    "buyerId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+    "sellerId": "a3ff7750-6607-41d4-880d-2ef486205059",
+    "isBuyerBlocked": false,
+    "isSellerBlocked": false,
+    "buyerLeftAt": "2026-06-19T10:49:15.702Z",
+    "sellerLeftAt": null,
+    "createdAt": "2026-06-19T09:23:50.779Z",
+    "updatedAt": "2026-06-19T10:49:15.702Z",
+    "messages": [
+      {
+        "id": "60994937-3beb-4f5a-82be-73625cc0e5b3",
+        "chatId": "f58f8517-5508-4fe9-a375-aba1778d9e5c",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "아이폰 18 판매합니다. 글 보고 연락드립니다.",
+        "isRead": false,
+        "createdAt": "2026-06-19T09:23:50.779Z"
+      },
+      {
+        "id": "f06af2d2-aede-4f1d-b46a-8bcfebe12383",
+        "chatId": "f58f8517-5508-4fe9-a375-aba1778d9e5c",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "잘 되나요",
+        "isRead": false,
+        "createdAt": "2026-06-19T09:24:02.430Z"
+      },
+      {
+        "id": "6431f2f4-d167-420a-b582-aa0625a2860c",
+        "chatId": "f58f8517-5508-4fe9-a375-aba1778d9e5c",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "정말이지 잘 되나요??? 아주 좋나요",
+        "isRead": false,
+        "createdAt": "2026-06-19T09:24:10.131Z"
+      },
+      {
+        "id": "5129dfb5-9ada-423c-baeb-9a4866f7ddd1",
+        "chatId": "f58f8517-5508-4fe9-a375-aba1778d9e5c",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "네 아주 잘됩니다!! ㅋㅋㅋㅋ",
+        "isRead": false,
+        "createdAt": "2026-06-19T09:24:22.172Z"
+      },
+      {
+        "id": "7cae772c-3cf0-4dbf-84cc-3156639f4121",
+        "chatId": "f58f8517-5508-4fe9-a375-aba1778d9e5c",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "어떡하나",
+        "isRead": false,
+        "createdAt": "2026-06-19T09:24:28.005Z"
+      }
+    ]
+  },
+  {
+    "id": "f06442e4-69c0-4f04-814d-805919cd6f0e",
+    "postId": "2d945fbc-3611-4082-85b0-5c6ae65071bb",
+    "postTitle": "아이폰 13 판매합니다.",
+    "buyerId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+    "sellerId": "a3ff7750-6607-41d4-880d-2ef486205059",
+    "isBuyerBlocked": false,
+    "isSellerBlocked": false,
+    "buyerLeftAt": null,
+    "sellerLeftAt": null,
+    "createdAt": "2026-06-19T09:47:52.489Z",
+    "updatedAt": "2026-06-19T09:47:56.992Z",
+    "messages": [
+      {
+        "id": "30ec2946-69b6-4a33-a255-075b79bc06ea",
+        "chatId": "f06442e4-69c0-4f04-814d-805919cd6f0e",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "아이폰 13 판매합니다. 글 보고 연락드립니다.",
+        "isRead": false,
+        "createdAt": "2026-06-19T09:47:52.489Z"
+      },
+      {
+        "id": "a980638a-fe8b-49cb-abd7-b31c61639b3a",
+        "chatId": "f06442e4-69c0-4f04-814d-805919cd6f0e",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "kk",
+        "isRead": false,
+        "createdAt": "2026-06-19T09:47:56.992Z"
+      }
+    ]
+  },
+  {
+    "id": "5928a3a6-fdc7-4002-8137-6fee3588cb4a",
+    "postId": "de0458aa-ead7-4bc8-a754-11b44de6d548",
+    "postTitle": "저의 최애 티셔츠 팝니다",
+    "buyerId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+    "sellerId": "a3ff7750-6607-41d4-880d-2ef486205059",
+    "isBuyerBlocked": false,
+    "isSellerBlocked": false,
+    "buyerLeftAt": null,
+    "sellerLeftAt": null,
+    "createdAt": "2026-06-19T11:44:44.770Z",
+    "updatedAt": "2026-06-19T11:44:59.920Z",
+    "messages": [
+      {
+        "id": "28d3c20c-fc9a-416c-8caf-e72401d000a5",
+        "chatId": "5928a3a6-fdc7-4002-8137-6fee3588cb4a",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "저의 최애 티셔츠 팝니다 글 보고 연락드립니다.",
+        "isRead": false,
+        "createdAt": "2026-06-19T11:44:44.770Z"
+      },
+      {
+        "id": "5dcd2046-9737-433f-bda4-96ad5bc4fbd3",
+        "chatId": "5928a3a6-fdc7-4002-8137-6fee3588cb4a",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "이거 팔렸나요??",
+        "isRead": false,
+        "createdAt": "2026-06-19T11:44:52.158Z"
+      },
+      {
+        "id": "9bbdd4e2-96fb-426f-ae83-e3b3fb4e6770",
+        "chatId": "5928a3a6-fdc7-4002-8137-6fee3588cb4a",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "오마이갓",
+        "isRead": false,
+        "createdAt": "2026-06-19T11:44:53.570Z"
+      },
+      {
+        "id": "9163ed26-dd7d-4193-af54-b32df0d6110c",
+        "chatId": "5928a3a6-fdc7-4002-8137-6fee3588cb4a",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "사고 싶었는데 ㅠㅠ",
+        "isRead": false,
+        "createdAt": "2026-06-19T11:44:56.031Z"
+      },
+      {
+        "id": "f4cef5e4-96d3-46e2-aca9-3853b64e0754",
+        "chatId": "5928a3a6-fdc7-4002-8137-6fee3588cb4a",
+        "senderId": "ecd6d01b-ac09-4b68-bea2-f91c2937cbb7",
+        "message": "저한체 파시징 ㅠㅠㅠㅠ",
+        "isRead": false,
+        "createdAt": "2026-06-19T11:44:59.920Z"
+      }
+    ]
+  }
+]
