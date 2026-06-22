@@ -32,7 +32,7 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json({
-      message: `인증코드가 전송이 되었습니다. ${verification.expiresInMinutes}분 안에 이메일함의 6자리 코드를 입력해 주세요.`,
+      message: `인증코드가 전송되었습니다. ${verification.expiresInMinutes}분 안에 이메일함의 6자리 코드를 입력해 주세요.`,
     });
   } catch (error) {
     if (error instanceof Error && error.message === "SMTP_NOT_CONFIGURED") {
@@ -41,6 +41,11 @@ export async function POST(request: Request) {
         { status: 500 },
       );
     }
+
+    console.error("Failed to send sign-up verification email", {
+      email,
+      error: error instanceof Error ? error.message : String(error),
+    });
 
     return NextResponse.json({ error: "인증 메일 발송에 실패했습니다." }, { status: 500 });
   }

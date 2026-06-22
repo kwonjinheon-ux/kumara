@@ -88,3 +88,13 @@ Colink.nz 회원가입은 최대한 빠르게 완료되도록 설계한다.
 
 가입 단계에서는 사용자의 이탈을 줄이는 것을 최우선으로 하며, 상세 정보는 마이페이지에서 단계적으로 입력하도록 한다.
 ```
+
+## Deployment Email Checklist
+
+배포 후 회원가입 인증 메일이 가지 않으면
+[Firebase App Hosting Email Checklist](firebase-app-hosting-email-checklist.md)를 먼저 확인한다.
+
+현재 MVP 회원가입은 Firebase Auth의 `sendEmailVerification()`이 아니라
+`/api/auth/send-verification-email` API와 SMTP를 통해 6자리 인증코드를 보낸다.
+따라서 App Hosting에는 Firebase `NEXT_PUBLIC_FIREBASE_*` 값뿐 아니라
+`SMTP_HOST`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM` 값도 반드시 설정되어야 한다.

@@ -53,6 +53,11 @@ export async function POST(request: Request) {
       );
     }
 
+    console.error("Failed to send password reset email", {
+      email,
+      error: error instanceof Error ? error.message : String(error),
+    });
+
     return NextResponse.json(
       { error: "비밀번호 재설정 메일 발송에 실패했습니다." },
       { status: 500 },
