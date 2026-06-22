@@ -9,7 +9,6 @@
     "dev": "next dev --webpack --hostname 0.0.0.0",
     "dev:turbo": "next dev --turbopack --hostname 0.0.0.0",
     "dev:restart": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/restart-dev.ps1",
-    "prebuild": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/clean-next.ps1",
     "build": "next build",
     "deploy": "npx -y firebase-tools@latest deploy",
     "deploy:apphosting": "npx -y firebase-tools@latest deploy --only apphosting",
