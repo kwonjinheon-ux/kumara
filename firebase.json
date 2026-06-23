@@ -16,7 +16,7 @@
     }
   },
   "apphosting": {
-    "backendId": "kumara-community",
+    "backendId": "kumara",
     "rootDir": "/",
     "ignore": [
       "node_modules",

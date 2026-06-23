@@ -27,6 +27,17 @@ export type FirebaseUserProfile = {
   emailVerified: boolean;
 };
 
+function fallbackProfileFromUser(user: FirebaseUser): FirebaseUserProfile {
+  return {
+    uid: user.uid,
+    email: user.email,
+    displayName: user.displayName ?? user.email?.split("@")[0] ?? "User",
+    photoURL: user.photoURL,
+    role: "user",
+    emailVerified: user.emailVerified,
+  };
+}
+
 type AuthContextValue = {
   firebaseUser: FirebaseUser | null;
   profile: FirebaseUserProfile | null;
@@ -52,14 +63,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const snapshot = await getDoc(ref);
 
     if (!snapshot.exists()) {
-      const fallbackProfile: FirebaseUserProfile = {
-        uid: user.uid,
-        email: user.email,
-        displayName: user.displayName ?? user.email?.split("@")[0] ?? "User",
-        photoURL: user.photoURL,
-        role: "user",
-        emailVerified: user.emailVerified,
-      };
+      const fallbackProfile = fallbackProfileFromUser(user);
 
       await setDoc(ref, {
         ...fallbackProfile,
@@ -88,8 +92,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return onAuthStateChanged(getFirebaseAuth(), async (user) => {
       setLoading(true);
       setFirebaseUser(user);
-      await loadProfile(user);
-      setLoading(false);
+      try {
+        await loadProfile(user);
+      } catch (error) {
+        console.error("Failed to load Firebase user profile.", error);
+        setProfile(user ? fallbackProfileFromUser(user) : null);
+      } finally {
+        setLoading(false);
+      }
     });
   }, [loadProfile]);
 
@@ -101,7 +111,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       logout: () => signOut(getFirebaseAuth()),
       refreshProfile: async () => {
         await getFirebaseAuth().currentUser?.reload();
-        await loadProfile(getFirebaseAuth().currentUser);
+        const currentUser = getFirebaseAuth().currentUser;
+        try {
+          await loadProfile(currentUser);
+        } catch (error) {
+          console.error("Failed to refresh Firebase user profile.", error);
+          setProfile(currentUser ? fallbackProfileFromUser(currentUser) : null);
+        }
       },
     }),
     [firebaseUser, loadProfile, loading, profile],
