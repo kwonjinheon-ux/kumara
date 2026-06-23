@@ -22,7 +22,7 @@ export function HomePageView({ user }: { user: User | null }) {
               <>
                 <ButtonLink href="/my-page">내 페이지</ButtonLink>
                 <ButtonLink href="/marketplace?menu=sell" variant="muted">마켓플레이스</ButtonLink>
-                <form action="/api/auth/logout" method="post">
+                <form action="/my-page?tab=security" method="get">
                   <Button type="submit" variant="muted">로그아웃</Button>
                 </form>
               </>

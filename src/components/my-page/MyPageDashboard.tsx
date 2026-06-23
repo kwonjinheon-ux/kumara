@@ -1173,7 +1173,7 @@ export function MyPageDashboard({ chatRooms, initialChatId, initialTab, keywordA
               <Link className="security-action" href="/auth/reset-password">비밀번호 재설정</Link>
               <button className="security-action" type="button">이메일 인증 상태: {currentUser.isEmailVerified ? "완료" : "필요"}</button>
               <button className="security-action" type="button">2단계 인증 준비 중</button>
-              <form action="/api/auth/logout" method="post">
+              <form action="/my-page?tab=security" method="get">
                 <button className="security-action danger" type="submit">모든 기기에서 로그아웃</button>
               </form>
             </div>

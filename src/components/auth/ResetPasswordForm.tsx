@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { confirmPasswordReset, sendPasswordResetEmail } from "firebase/auth";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 import { Button } from "@/components/common/Button";
+import { getFirebaseAuth } from "@/lib/firebase";
 
 type FormState = {
   error: string;
@@ -12,10 +14,10 @@ type FormState = {
 };
 
 type ResetPasswordFormProps = {
-  token: string;
+  oobCode: string;
 };
 
-export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
+export function ResetPasswordForm({ oobCode }: ResetPasswordFormProps) {
   const router = useRouter();
   const [state, setState] = useState<FormState>({
     error: "",
@@ -30,17 +32,14 @@ export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
     event.preventDefault();
     setState({ error: "", message: "", loading: true });
 
-    const form = new FormData(event.currentTarget);
-    const response = await fetch("/api/auth/request-password-reset", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: form.get("email") }),
-    });
-    const result = (await response.json()) as { error?: string; message?: string };
-
-    if (!response.ok) {
+    try {
+      const form = new FormData(event.currentTarget);
+      await sendPasswordResetEmail(getFirebaseAuth(), String(form.get("email") ?? ""), {
+        url: `${window.location.origin}/auth/reset-password`,
+      });
+    } catch (error) {
       setState({
-        error: result.error ?? "비밀번호 재설정 메일 발송에 실패했습니다.",
+        error: error instanceof Error ? error.message : "비밀번호 재설정 메일 발송에 실패했습니다.",
         message: "",
         loading: false,
       });
@@ -49,7 +48,7 @@ export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
 
     setState({
       error: "",
-      message: result.message ?? "비밀번호 재설정 메일이 전송되었습니다.",
+      message: "비밀번호 재설정 메일이 전송되었습니다.",
       loading: false,
     });
   }
@@ -59,20 +58,15 @@ export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
     setState({ error: "", message: "", loading: true });
 
     if (passwordMismatch) {
-      setState({ error: "패스워드가 맞지 않습니다.", message: "", loading: false });
+      setState({ error: "비밀번호가 서로 일치하지 않습니다.", message: "", loading: false });
       return;
     }
 
-    const response = await fetch("/api/auth/reset-password", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ token, password, passwordConfirm }),
-    });
-    const result = (await response.json()) as { error?: string; message?: string };
-
-    if (!response.ok) {
+    try {
+      await confirmPasswordReset(getFirebaseAuth(), oobCode, password);
+    } catch (error) {
       setState({
-        error: result.error ?? "비밀번호 변경에 실패했습니다.",
+        error: error instanceof Error ? error.message : "비밀번호 변경에 실패했습니다.",
         message: "",
         loading: false,
       });
@@ -81,7 +75,7 @@ export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
 
     setState({
       error: "",
-      message: result.message ?? "비밀번호가 변경되었습니다.",
+      message: "비밀번호가 변경되었습니다.",
       loading: false,
     });
 
@@ -91,7 +85,7 @@ export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
     }, 900);
   }
 
-  if (!token) {
+  if (!oobCode) {
     return (
       <form className="auth-form" onSubmit={requestReset}>
         <label>
@@ -106,8 +100,8 @@ export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
         </label>
         <div className="auth-info-panel compact">
           <p>
-            가입한 이메일로 비밀번호 재설정 버튼을 보내드립니다. 메일의 버튼을 누르면
-            이 화면에서 새 비밀번호를 설정할 수 있습니다.
+            가입한 이메일로 Firebase 비밀번호 재설정 링크를 보냅니다. 메일의 링크를 누르면 새
+            비밀번호를 설정할 수 있습니다.
           </p>
         </div>
         {state.error ? <p className="form-error">{state.error}</p> : null}
@@ -125,29 +119,26 @@ export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
         새 비밀번호
         <input
           autoComplete="new-password"
-          minLength={10}
+          minLength={6}
           onChange={(event) => setPassword(event.target.value)}
-          placeholder="대소문자, 숫자, 특수문자 조합"
+          placeholder="새 비밀번호를 입력하세요"
           required
           type="password"
           value={password}
         />
-        <span className="field-hint">
-          10자 이상, 영문 대문자/소문자/숫자/특수문자 중 3가지 이상 조합을 추천합니다.
-        </span>
       </label>
       <label>
         새 비밀번호 재확인
         <input
           autoComplete="new-password"
-          minLength={10}
+          minLength={6}
           onChange={(event) => setPasswordConfirm(event.target.value)}
           placeholder="비밀번호를 한 번 더 입력"
           required
           type="password"
           value={passwordConfirm}
         />
-        {passwordMismatch ? <span className="field-error">패스워드가 맞지 않습니다.</span> : null}
+        {passwordMismatch ? <span className="field-error">비밀번호가 서로 일치하지 않습니다.</span> : null}
       </label>
       {state.error ? <p className="form-error">{state.error}</p> : null}
       {state.message ? <p className="form-success">{state.message}</p> : null}

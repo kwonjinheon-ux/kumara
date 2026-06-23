@@ -4,13 +4,13 @@ import Script from "next/script";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from "firebase/auth";
-import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
 
 import { Button } from "@/components/common/Button";
 import { GoogleAuthLink } from "@/components/auth/GoogleAuthLink";
 import { termsSections } from "@/config/terms";
-import { getFirebaseAuth, getFirebaseStorage, getFirestoreDb } from "@/lib/firebase";
+import { getFirebaseAuth, getFirebaseStorage } from "@/lib/firebase";
+import { upsertFirebaseUserProfile } from "@/lib/firebase-auth-profile";
 
 type FormState = {
   error: string;
@@ -113,33 +113,29 @@ export function RegisterForm() {
 
       await updateProfile(user, { displayName, photoURL });
       await sendEmailVerification(user);
-      await setDoc(doc(getFirestoreDb(), "users", user.uid), {
-        uid: user.uid,
-        email: user.email,
+      await upsertFirebaseUserProfile(user, {
         displayName,
         photoURL,
-        createdAt: serverTimestamp(),
-        updatedAt: serverTimestamp(),
-        role: "user",
-        emailVerified: user.emailVerified,
-        profile: {
-          bio: String(form.get("bio") ?? "") || null,
-          businessDescription: String(form.get("businessDescription") ?? "") || null,
-          businessInterested: form.get("businessInterested") === "on",
-          businessName: String(form.get("businessName") ?? "") || null,
-          hasCar:
-            form.get("hasCar") === "yes"
-              ? true
-              : form.get("hasCar") === "no"
-                ? false
-                : null,
-          interests: form.getAll("interests").map(String),
-          kakaoTalkId: String(form.get("kakaoTalkId") ?? "") || null,
-          lifeInfoInterests: form.getAll("lifeInfoInterests").map(String),
-          preferredLanguage: String(form.get("preferredLanguage") ?? "ko"),
-          residencyStatus: String(form.get("residencyStatus") ?? "") || null,
-          smartphoneNumber: String(form.get("smartphoneNumber") ?? "") || null,
-          tradeArea: String(form.get("tradeArea") ?? "") || null,
+        extra: {
+          profile: {
+            bio: String(form.get("bio") ?? "") || null,
+            businessDescription: String(form.get("businessDescription") ?? "") || null,
+            businessInterested: form.get("businessInterested") === "on",
+            businessName: String(form.get("businessName") ?? "") || null,
+            hasCar:
+              form.get("hasCar") === "yes"
+                ? true
+                : form.get("hasCar") === "no"
+                  ? false
+                  : null,
+            interests: form.getAll("interests").map(String),
+            kakaoTalkId: String(form.get("kakaoTalkId") ?? "") || null,
+            lifeInfoInterests: form.getAll("lifeInfoInterests").map(String),
+            preferredLanguage: String(form.get("preferredLanguage") ?? "ko"),
+            residencyStatus: String(form.get("residencyStatus") ?? "") || null,
+            smartphoneNumber: String(form.get("smartphoneNumber") ?? "") || null,
+            tradeArea: String(form.get("tradeArea") ?? "") || null,
+          },
         },
       });
 
@@ -160,7 +156,14 @@ export function RegisterForm() {
     }
 
     const form = new FormData(event.currentTarget);
-    const response = await fetch("/api/auth/register", {
+    const response = await Promise.resolve({
+      ok: false,
+      json: async () => ({ error: "Legacy registration path is disabled. Firebase Auth is used above." }),
+    });
+    void verificationToken;
+    void recaptchaToken;
+    void profileImage;
+    /*
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -196,6 +199,7 @@ export function RegisterForm() {
         lifeInfoInterests: form.getAll("lifeInfoInterests"),
       }),
     });
+    */
     const result = (await response.json()) as { error?: string };
 
     if (!response.ok) {
@@ -220,11 +224,16 @@ export function RegisterForm() {
     return;
 
     setSendingVerification(true);
-    const response = await fetch("/api/auth/send-verification-email", {
+    const response = await Promise.resolve({
+      ok: false,
+      json: async () => ({ error: "Firebase sends the verification email after signup." }),
+    });
+    /*
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: loginId, recaptchaToken }),
     });
+    */
     const result = (await response.json()) as { error?: string; message?: string };
     setSendingVerification(false);
 
@@ -234,18 +243,24 @@ export function RegisterForm() {
     }
 
     setVerificationMessage(
-      result.message ?? "인증코드가 전송이 되었습니다. 이메일함에서 6자리 코드를 확인해 주세요.",
+      result.message ?? "회원가입을 완료하면 Firebase 인증 메일이 자동으로 발송됩니다.",
     );
   }
 
   async function verifyEmailCode() {
     setState({ error: "", loading: false });
 
-    const response = await fetch("/api/auth/verify-email", {
+    const response = await Promise.resolve({
+      ok: false,
+      json: async () => ({ error: "Firebase verifies email through the link in the email." }),
+    });
+    void emailCode;
+    /*
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: loginId, code: emailCode }),
     });
+    */
     const result = (await response.json()) as {
       error?: string;
       message?: string;
@@ -298,29 +313,13 @@ export function RegisterForm() {
           >
             {sendingVerification ? "전송 중..." : "인증 코드 받기"}
           </Button>
-          <input
-            disabled={!isEmailLogin}
-            inputMode="numeric"
-            maxLength={6}
-            onChange={(event) => setEmailCode(event.target.value)}
-            placeholder="6자리 코드"
-            value={emailCode}
-          />
-          <Button
-            disabled={!isEmailLogin}
-            onClick={verifyEmailCode}
-            type="button"
-            variant="muted"
-          >
-            확인
-          </Button>
         </div>
         {verificationMessage ? (
           <p className="form-success">
             {verificationMessage}
           </p>
         ) : (
-          <p className="field-hint">이메일 주소를 입력하면 인증 코드를 받을 수 있습니다.</p>
+          <p className="field-hint">회원가입을 완료하면 Firebase 인증 메일이 발송됩니다. 메일 안의 링크를 눌러 인증을 완료해 주세요.</p>
         )}
       </div>
       <label>

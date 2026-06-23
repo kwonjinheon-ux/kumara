@@ -6,6 +6,15 @@
   "storage": {
     "rules": "storage.rules"
   },
+  "auth": {
+    "providers": {
+      "emailPassword": true,
+      "googleSignIn": {
+        "oAuthBrandDisplayName": "Kumara",
+        "supportEmail": "kwonjinheon@gmail.com"
+      }
+    }
+  },
   "apphosting": {
     "backendId": "kumara-community",
     "rootDir": "/",
