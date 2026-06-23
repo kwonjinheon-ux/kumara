@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 import { useAuth } from "@/components/auth/AuthProvider";
-import { deleteFirebaseMarketPost, toggleFirebaseBookmark, voteFirebasePost } from "@/lib/firebase-marketplace";
+import { bumpFirebaseMarketPost, deleteFirebaseMarketPost, toggleFirebaseBookmark, voteFirebasePost } from "@/lib/firebase-marketplace";
 import type { PublicMarketPost } from "@/types/marketplace";
 
 type Props = {
@@ -13,23 +13,6 @@ type Props = {
 };
 
 type IconName = "arrowDown" | "arrowUp" | "comment" | "edit" | "eye" | "heart" | "rocket" | "trash";
-type PostActionPatch = Partial<
-  Pick<
-    PublicMarketPost,
-    | "bumpedAt"
-    | "bookmarkCount"
-    | "commentCount"
-    | "downvoteCount"
-    | "isBookmarked"
-    | "isBoosted"
-    | "nextBumpAvailableAt"
-    | "status"
-    | "updatedAt"
-    | "upvoteCount"
-    | "userVote"
-    | "viewCount"
-  >
->;
 
 export function MarketplacePostActions({ initialPost, isLoggedIn }: Props) {
   const { firebaseUser } = useAuth();
@@ -102,10 +85,15 @@ export function MarketplacePostActions({ initialPost, isLoggedIn }: Props) {
       return;
     }
 
-    const previousPost = post;
     setMessage(null);
     setPost((current) => ({ ...current, isBoosted: true }));
-    await runAction(`/api/marketplace/posts/${post.id}/bump`, {}, previousPost);
+    try {
+      const savedPost = await bumpFirebaseMarketPost(post.id, firebaseUser);
+      if (savedPost) setPost((current) => ({ ...current, ...savedPost }));
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "게시글을 끌어올리지 못했습니다.");
+      setPost((current) => ({ ...current, isBoosted: false }));
+    }
   }
 
   async function deletePost() {
@@ -126,36 +114,6 @@ export function MarketplacePostActions({ initialPost, isLoggedIn }: Props) {
       return;
     }
 
-    const response = await fetch(`/api/marketplace/posts/${post.id}`, {
-      credentials: "same-origin",
-      method: "DELETE",
-    });
-    const result = await response.json().catch(() => null);
-
-    if (!response.ok) {
-      setMessage(result?.error ?? "게시글을 삭제하지 못했습니다.");
-      return;
-    }
-
-    window.location.assign("/marketplace");
-  }
-
-  async function runAction(url: string, body: Record<string, unknown>, previousPost: PublicMarketPost) {
-    const response = await fetch(url, {
-      body: JSON.stringify(body),
-      credentials: "same-origin",
-      headers: { "Content-Type": "application/json" },
-      method: "POST",
-    });
-    const result = await response.json();
-
-    if (!response.ok) {
-      setMessage(result.error ?? "요청을 처리하지 못했습니다.");
-      setPost(previousPost);
-      return;
-    }
-
-    setPost((current) => ({ ...current, ...(result.post as PostActionPatch) }));
   }
 
   return (

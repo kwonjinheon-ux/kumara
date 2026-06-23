@@ -139,7 +139,7 @@ export function RegisterForm() {
         },
       });
 
-      router.push("/my-page");
+      router.push("/marketplace");
       router.refresh();
       return;
     } catch (error) {

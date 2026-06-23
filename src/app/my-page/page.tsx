@@ -1,50 +1,122 @@
 "use client";
 
-import { sendEmailVerification } from "firebase/auth";
-import { doc, serverTimestamp, updateDoc } from "firebase/firestore";
-import { getDownloadURL, ref, uploadString } from "firebase/storage";
-import { useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 
 import { useAuth } from "@/components/auth/AuthProvider";
-import { Button } from "@/components/common/Button";
-import { getFirebaseStorage, getFirestoreDb } from "@/lib/firebase";
+import { MyPageDashboard } from "@/components/my-page/MyPageDashboard";
+import { listFirebaseMarketPosts } from "@/lib/firebase-marketplace";
+import type { KeywordAlertSettings } from "@/types/keyword-alert";
+import type { PublicMarketPost } from "@/types/marketplace";
+import type { PublicUser, UserProfile } from "@/types/user";
+
+const defaultKeywordAlerts: KeywordAlertSettings = {
+  categoryScope: [],
+  isActive: true,
+  keywords: [],
+  notifyEmail: false,
+  notifyInApp: true,
+  notifyPush: false,
+  updatedAt: null,
+};
+
+const defaultProfile: UserProfile = {
+  allowChat: true,
+  bio: null,
+  businessDescription: null,
+  businessInterested: false,
+  businessName: null,
+  city: null,
+  hasCar: null,
+  interests: [],
+  kakaoTalkId: null,
+  lifeInfoInterests: [],
+  notificationComments: true,
+  notificationSavedPosts: true,
+  notificationTradeMessages: true,
+  preferredLanguage: "ko",
+  profileImageScale: 1,
+  profileImageUrl: null,
+  profileImageX: 0,
+  profileImageY: 0,
+  residencyStatus: null,
+  showKakaoTalkId: false,
+  showPhoneNumber: false,
+  smartphoneNumber: null,
+  suburb: null,
+  tradeArea: null,
+};
 
 export default function MyPage() {
-  const { firebaseUser, loading, profile, refreshProfile } = useAuth();
-  const [message, setMessage] = useState("");
-  const [uploading, setUploading] = useState(false);
+  return (
+    <Suspense fallback={<main className="my-page">Loading...</main>}>
+      <MyPageContent />
+    </Suspense>
+  );
+}
 
-  async function resendVerification() {
-    if (!firebaseUser) return;
-    await sendEmailVerification(firebaseUser);
-    setMessage("인증 메일을 다시 보냈습니다.");
-  }
+function MyPageContent() {
+  const { firebaseUser, loading, profile } = useAuth();
+  const [marketPosts, setMarketPosts] = useState<PublicMarketPost[]>([]);
+  const [postsLoading, setPostsLoading] = useState(true);
 
-  async function onProfileImageChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const file = event.target.files?.[0];
-    if (!firebaseUser || !file) return;
+  useEffect(() => {
+    if (!firebaseUser) {
+      setMarketPosts([]);
+      setPostsLoading(false);
+      return;
+    }
 
-    setUploading(true);
-    const reader = new FileReader();
-    reader.onload = async () => {
-      if (typeof reader.result !== "string") return;
-      const imageRef = ref(getFirebaseStorage(), `users/${firebaseUser.uid}/profile/profile-${Date.now()}`);
-      await uploadString(imageRef, reader.result, "data_url");
-      const photoURL = await getDownloadURL(imageRef);
-      await updateDoc(doc(getFirestoreDb(), "users", firebaseUser.uid), {
-        photoURL,
-        updatedAt: serverTimestamp(),
+    let cancelled = false;
+    setPostsLoading(true);
+
+    listFirebaseMarketPosts(firebaseUser.uid)
+      .then((posts) => {
+        if (!cancelled) setMarketPosts(posts);
+      })
+      .catch((error) => {
+        console.error("Failed to load my-page marketplace posts.", error);
+        if (!cancelled) setMarketPosts([]);
+      })
+      .finally(() => {
+        if (!cancelled) setPostsLoading(false);
       });
-      await refreshProfile();
-      setUploading(false);
-      setMessage("프로필 이미지가 저장되었습니다.");
+
+    return () => {
+      cancelled = true;
     };
-    reader.readAsDataURL(file);
+  }, [firebaseUser]);
+
+  const user = useMemo<PublicUser | null>(() => {
+    if (!firebaseUser) return null;
+
+    return {
+      createdAt: firebaseUser.metadata.creationTime ?? new Date().toISOString(),
+      email: firebaseUser.email,
+      id: firebaseUser.uid,
+      isEmailVerified: firebaseUser.emailVerified,
+      isPhoneVerified: Boolean(firebaseUser.phoneNumber),
+      membershipLevel: "iron",
+      nickname:
+        profile?.displayName ||
+        firebaseUser.displayName ||
+        firebaseUser.email?.split("@")[0] ||
+        "User",
+      phone: firebaseUser.phoneNumber,
+      profile: {
+        ...defaultProfile,
+        profileImageUrl: profile?.photoURL ?? firebaseUser.photoURL,
+      },
+      referralId: null,
+      role: firebaseUser.emailVerified ? "verified_member" : "member",
+      status: firebaseUser.emailVerified ? "active" : "pending_verification",
+    };
+  }, [firebaseUser, profile]);
+
+  if (loading || postsLoading) {
+    return <main className="my-page">Loading...</main>;
   }
 
-  if (loading) return <main className="my-page">Loading...</main>;
-
-  if (!firebaseUser) {
+  if (!firebaseUser || !user) {
     return (
       <main className="my-page">
         <p className="form-error">로그인이 필요합니다.</p>
@@ -54,39 +126,13 @@ export default function MyPage() {
 
   return (
     <main className="my-page">
-      <section className="my-dashboard">
-        <div className="my-profile-card">
-          <h1>마이페이지</h1>
-          <dl>
-            <div>
-              <dt>UID</dt>
-              <dd>{firebaseUser.uid}</dd>
-            </div>
-            <div>
-              <dt>이메일</dt>
-              <dd>{firebaseUser.email}</dd>
-            </div>
-            <div>
-              <dt>닉네임</dt>
-              <dd>{profile?.displayName ?? firebaseUser.displayName}</dd>
-            </div>
-            <div>
-              <dt>이메일 인증</dt>
-              <dd>{firebaseUser.emailVerified ? "인증됨" : "미인증"}</dd>
-            </div>
-          </dl>
-          <label>
-            프로필 이미지
-            <input accept="image/*" disabled={uploading} onChange={onProfileImageChange} type="file" />
-          </label>
-          {!firebaseUser.emailVerified ? (
-            <Button onClick={() => void resendVerification()} type="button">
-              인증 메일 다시 보내기
-            </Button>
-          ) : null}
-          {message ? <p className="form-success">{message}</p> : null}
-        </div>
-      </section>
+      <MyPageDashboard
+        chatRooms={[]}
+        keywordAlerts={defaultKeywordAlerts}
+        marketPosts={marketPosts}
+        user={user}
+        userComments={[]}
+      />
     </main>
   );
 }

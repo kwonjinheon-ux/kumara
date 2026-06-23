@@ -11,19 +11,6 @@ type Props = {
   isLoggedIn: boolean;
 };
 
-type TradePatch = Partial<
-  Pick<
-    PublicMarketPost,
-    | "myPurchaseRequest"
-    | "pointAwardedAt"
-    | "purchaseRequests"
-    | "selectedBuyerId"
-    | "selectedPurchaseRequest"
-    | "status"
-    | "updatedAt"
-  >
->;
-
 export function MarketplaceTradeProgress({ initialPost, isLoggedIn }: Props) {
   const { language } = useLanguage();
   const [post, setPost] = useState(initialPost);
@@ -40,34 +27,10 @@ export function MarketplaceTradeProgress({ initialPost, isLoggedIn }: Props) {
 
     if (pendingAction) return;
 
-    const previousPost = post;
     setPendingAction(action);
-    setMessage(getTradeActionMessage(action, language));
-    setPost((current) => getOptimisticPost(current, action, body));
-
-    try {
-      const response = await fetch(`/api/marketplace/posts/${post.id}/trade`, {
-        body: JSON.stringify({ action, ...body }),
-        credentials: "same-origin",
-        headers: { "Content-Type": "application/json" },
-        method: "POST",
-      });
-      const result = await response.json().catch(() => null);
-
-      if (!response.ok) {
-        setMessage(result?.error ?? "거래 요청을 처리하지 못했습니다.");
-        setPost(previousPost);
-        return;
-      }
-
-      setPost((current) => ({ ...current, ...(result.post as TradePatch) }));
-      setMessage(getTradeActionMessage(action, language));
-    } catch {
-      setMessage("거래 요청을 처리하지 못했습니다.");
-      setPost(previousPost);
-    } finally {
-      setPendingAction(null);
-    }
+    setMessage("거래 진행 기능은 Firebase 전환 작업 중입니다. 게시글, 댓글, 북마크는 사용할 수 있습니다.");
+    setPendingAction(null);
+    void body;
   }
 
   return (

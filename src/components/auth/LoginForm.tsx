@@ -40,7 +40,7 @@ export function LoginForm() {
         String(form.get("loginId") ?? ""),
         String(form.get("password") ?? ""),
       );
-      window.location.assign("/my-page");
+      window.location.assign("/marketplace");
     } catch (error) {
       setState({
         error: error instanceof Error ? error.message : "로그인에 실패했습니다.",

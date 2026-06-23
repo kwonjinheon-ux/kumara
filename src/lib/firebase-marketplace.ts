@@ -134,6 +134,27 @@ export async function deleteFirebaseMarketPost(postId: string, currentUser: User
   await deleteDoc(postRef);
 }
 
+export async function bumpFirebaseMarketPost(postId: string, currentUser: User) {
+  const postRef = doc(getFirestoreDb(), "posts", postId);
+  const snapshot = await getDoc(postRef);
+
+  if (!snapshot.exists()) throw new Error("게시글을 찾을 수 없습니다.");
+  if (snapshot.data().authorId !== currentUser.uid) {
+    throw new Error("게시글 작성자만 끌어올릴 수 있습니다.");
+  }
+
+  const now = new Date();
+  const nextBump = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+
+  await updateDoc(postRef, {
+    bumpedAt: now.toISOString(),
+    nextBumpAvailableAt: nextBump.toISOString(),
+    updatedAt: serverTimestamp(),
+  });
+
+  return getFirebaseMarketPost(postId, currentUser.uid);
+}
+
 export async function toggleFirebaseBookmark(postId: string, currentUser: User) {
   const db = getFirestoreDb();
   const postRef = doc(db, "posts", postId);

@@ -31,7 +31,7 @@ export function GoogleAuthLink({ mode }: GoogleAuthLinkProps) {
         photoURL: credential.user.photoURL,
       });
 
-      router.push("/my-page");
+      router.push("/marketplace");
       router.refresh();
     } catch (caught) {
       const code =
